@@ -19,6 +19,7 @@
               for="file-upload"
               class="flex flex-col items-center justify-center w-full h-48 border-2 border-slate-300 border-dashed rounded-2xl cursor-pointer bg-white hover:bg-slate-50 transition-colors duration-300"
             >
+              @if(!selectedFile()) {
               <div class="flex flex-col items-center justify-center">
                 <div
                   class="w-12 h-12 mb-4 bg-blue-50 rounded-full flex items-center justify-center"
@@ -47,11 +48,54 @@
                   PDFs up to 5MB (Text-based only)
                 </p>
               </div>
+              } @else {
+              <div
+                class="flex flex-col items-center justify-center animate-fade-in"
+              >
+                <div
+                  class="w-12 h-12 mb-4 bg-red-100 text-red-500 rounded-full flex items-center justify-center"
+                >
+                  <svg
+                    class="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                    ></path>
+                  </svg>
+                </div>
+
+                <p
+                  class="mb-1 text-md font-bold text-slate-800 break-all px-4 text-center"
+                >
+                  {{ selectedFile()?.name }}
+                </p>
+
+                <p class="mb-4 text-sm text-slate-500">
+                  {{ (selectedFile()?.size || 0) / 1024 / 1024 | number:'1.2-2'
+                  }} MB
+                </p>
+
+                <div class="actions flex gap-2">
+                  <span
+                    class="px-4 py-2 text-sm font-medium text-blue-600 bg-blue-100 rounded-lg hover:bg-blue-200 transition-colors"
+                  >
+                    Change File
+                  </span>
+                </div>
+              </div>
+              }
               <input
                 id="file-upload"
                 type="file"
                 class="hidden"
                 accept="application/pdf"
+                (change)="onFileSelected($event)"
               />
             </label>
           </div>
@@ -63,10 +107,11 @@
             <span class="text-lg">----------------------</span>
           </div>
           <textarea
+            [disabled]="store.isLoading()"
             [rows]="6"
             formControlName="resumeText"
             [placeholder]="resumePlaceholder()"
-            class="w-full resize-none border border-gray-300 rounded-md p-4 flex-1"
+            class="w-full resize-none border border-gray-300 rounded-md p-4 flex-1 disabled:opacity-50 disabled:cursor-not-allowed"
           ></textarea>
         </div>
       </section>
@@ -82,10 +127,11 @@
         </header>
         <div class="content flex-1">
           <textarea
+            [disabled]="store.isLoading()"
             formControlName="targetJobDescription"
             [rows]="10"
             [placeholder]="jobDescriptionPlaceholder()"
-            class="w-full resize-none border border-gray-300 rounded-md p-4 h-full"
+            class="w-full resize-none border border-gray-300 rounded-md p-4 h-full disabled:opacity-50 disabled:cursor-not-allowed"
           ></textarea>
         </div>
       </section>
@@ -94,9 +140,14 @@
       <button
         class="flex items-center gap-1 bg-indigo-600 text-white px-6 py-2 rounded-md hover:bg-indigo-700 transition cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
         type="submit"
-        [disabled]="form.invalid"
+        [disabled]="form.invalid || store.isLoading()"
       >
-        <span class="material-symbols-outlined text-white"> toys_fan </span>
+        <span
+          class="material-symbols-outlined text-white"
+          [class.animate-spin]="store.isLoading()"
+        >
+          toys_fan
+        </span>
         <span>Analyze Resume</span>
       </button>
     </footer>

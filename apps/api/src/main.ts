@@ -8,15 +8,15 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get('', (req, res) => {
+app.get('/api', (req, res) => {
   res.send({ message: 'Welcome to the Resume Analyzer API!' });
 });
 
-app.post('/extractText', (req, res) => {
+app.post('/api/extractText', (req, res) => {
   extractTextFromPDFHandler(req, res);
 });
 
-app.post('/analyze', (req, res) => {
+app.post('/api/analyze', (req, res) => {
   analyzeResume(req, res);
 });
 

@@ -43,14 +43,14 @@ export interface ResumeAnalysis {
   recommendedImprovements: string[];
 }
 
-export interface ResumeAnalysisResponse {
-  success: boolean;
-  data: ResumeAnalysis;
-}
-
 export interface ResumeAnalysisRequest {
   resumeText: string;
   jobDescription: string;
+}
+
+export interface ResumeAnalysisResponse {
+  success: boolean;
+  data: ResumeAnalysis;
 }
 
 export interface TextExtractionResponse {

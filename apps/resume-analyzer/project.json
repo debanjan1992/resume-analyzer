@@ -54,7 +54,8 @@
           "buildTarget": "resume-analyzer:build:production"
         },
         "development": {
-          "buildTarget": "resume-analyzer:build:development"
+          "buildTarget": "resume-analyzer:build:development",
+          "proxyConfig": "apps/resume-analyzer/proxy.conf.json"
         }
       },
       "defaultConfiguration": "development"

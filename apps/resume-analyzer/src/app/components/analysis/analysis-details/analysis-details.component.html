@@ -1,0 +1,167 @@
+<div
+  class="w-full bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden"
+>
+  <div class="flex border-b border-slate-200 px-2">
+    <button
+      (click)="setActiveTab('fixes')"
+      class="px-6 py-4 text-sm font-semibold transition-all duration-200 relative outline-none cursor-pointer"
+      [class.text-blue-600]="activeTab() === 'fixes'"
+      [class.text-slate-500]="activeTab() !== 'fixes'"
+      [class.hover:text-slate-700]="activeTab() !== 'fixes'"
+    >
+      Fixes & Improvements
+      @if (activeTab() === 'fixes') {
+        <span
+          class="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 animate-fade-in"
+        ></span>
+      }
+    </button>
+
+    <button
+      (click)="setActiveTab('keywords')"
+      class="px-6 py-4 text-sm font-semibold transition-all duration-200 relative outline-none cursor-pointer"
+      [class.text-blue-600]="activeTab() === 'keywords'"
+      [class.text-slate-500]="activeTab() !== 'keywords'"
+    >
+      Keyword Report
+      @if (activeTab() === 'keywords') {
+        <span
+          class="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 animate-fade-in"
+        ></span>
+      }
+    </button>
+  </div>
+
+  <div class="p-8 bg-white min-h-[400px]">
+    @if (activeTab() === 'fixes') {
+      <ng-container [ngTemplateOutlet]="fixes"></ng-container>
+    }
+
+    @if (activeTab() === 'keywords') {
+      <ng-container [ngTemplateOutlet]="keywordAnalysis"></ng-container>
+    }
+  </div>
+</div>
+
+<ng-template #fixes>
+  <div class="analysis-and-improvements flex gap-6">
+    <div class="flex-1">
+      <section class="flex-1 flex flex-col">
+        <header class="text-xl font-medium">Critical Fixes</header>
+      </section>
+      <section class="flex-1 flex flex-col">
+        @for (fix of store.analysisResult()?.criticalFixes || []; track fix) {
+          <div
+            class="fix-item flex items-start gap-2 mt-4 p-2 bg-stone-100 rounded-lg"
+          >
+            <span class="material-symbols-outlined text-red-500 mt-1"
+              >error_outline</span
+            >
+            <p class="text-sm text-slate-700">{{ fix }}</p>
+          </div>
+        }
+      </section>
+    </div>
+    <div class="flex-1">
+      <section class="flex-1 flex flex-col">
+        <header class="text-xl font-medium">Recommendations</header>
+      </section>
+      <section class="flex-1 flex flex-col">
+        @for (
+          fix of store.analysisResult()?.recommendedImprovements || [];
+          track fix
+        ) {
+          <div
+            class="fix-item flex items-start gap-2 mt-4 p-2 bg-stone-100 rounded-lg"
+          >
+            <span class="material-symbols-outlined text-blue-500 mt-1"
+              >info</span
+            >
+            <p class="text-sm text-slate-700">{{ fix }}</p>
+          </div>
+        }
+      </section>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #keywordAnalysis>
+  <div class="keywords">
+    @if (
+      store.analysisResult()?.keywordMatch?.missingHighPriority?.length || 0 > 0
+    ) {
+      <div class="mb-4">
+        <header class="flex items-center gap-1 mb-6">
+          <span class="material-symbols-outlined text-red-500">
+            dangerous
+          </span>
+          <span class="text-md font-semibold align-middle"
+            >Missing Keywords - High Priority</span
+          >
+        </header>
+        <div class="content">
+          @for (
+            missingKeyword of store.analysisResult()?.keywordMatch
+              ?.missingHighPriority;
+            track missingKeyword
+          ) {
+            <div
+              class="keyword-item inline-block bg-red-100 text-red-700 text-sm font-medium mr-2 mb-2 px-3 py-1 rounded-full"
+            >
+              {{ missingKeyword }}
+            </div>
+          }
+        </div>
+      </div>
+    }
+    @if (store.analysisResult()?.keywordMatch?.matched?.length || 0 > 0) {
+      <div class="mb-4">
+        <header class="flex items-center gap-1 mb-6">
+          <span class="material-symbols-outlined text-orange-500">
+            warning
+          </span>
+          <span class="text-md font-semibold align-middle"
+            >Missing Keywords - Low Priority</span
+          >
+        </header>
+        <div class="content">
+          @for (
+            missingKeyword of store.analysisResult()?.keywordMatch
+              ?.missingLowPriority;
+            track missingKeyword
+          ) {
+            <div
+              class="keyword-item inline-block bg-orange-100 text-orange-700 text-sm font-medium mr-2 mb-2 px-3 py-1 rounded-full"
+            >
+              {{ missingKeyword }}
+            </div>
+          }
+        </div>
+      </div>
+    }
+    @if (store.analysisResult()?.keywordMatch?.matched?.length || 0 > 0) {
+      <div class="mb-4">
+        <header class="flex items-center gap-1 mb-6">
+          <span class="material-symbols-outlined text-green-500">
+            check_circle
+          </span>
+          <span class="text-md font-semibold align-middle"
+            >Matched Keywords</span
+          >
+        </header>
+        <div class="content">
+          @for (
+            missingKeyword of store.analysisResult()?.keywordMatch?.matched;
+            track missingKeyword
+          ) {
+            <div
+              class="keyword-item inline-block bg-green-100 text-green-700 text-sm font-medium mr-2 mb-2 px-3 py-1 rounded-full"
+            >
+              {{ missingKeyword }}
+            </div>
+          }
+        </div>
+      </div>
+    }
+  </div>
+</ng-template>
