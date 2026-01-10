@@ -1,8 +1,17 @@
 import { Request, Response } from 'express';
 import Busboy from 'busboy';
-import PDFParser from 'pdf2json';
+import { extractTextFromPDF } from './extract-text-from-pdf';
+import { getGeminiAnalysis } from './ai';
+import {
+  ResumeAnalysisRequest,
+  ResumeAnalysisResponse,
+  TextExtractionResponse,
+} from '@resume-analyzer/models';
 
-export const analyzeResume = (req: Request, res: Response) => {
+export const extractTextFromPDFHandler = (
+  req: Request,
+  res: Response<TextExtractionResponse | { error: string }>,
+) => {
   if (req.method !== 'POST') {
     return res.status(405).end();
   }
@@ -18,33 +27,39 @@ export const analyzeResume = (req: Request, res: Response) => {
     file.on('data', (data) => fileBuffers.push(data));
   });
 
-  busboy.on('finish', () => {
+  busboy.on('finish', async () => {
     if (fileBuffers.length === 0) {
       return res.status(400).json({ error: 'No PDF uploaded.' });
     }
 
     const pdfBuffer = Buffer.concat(fileBuffers);
 
-    const pdfParser = new PDFParser(null, true);
-
-    pdfParser.on('pdfParser_dataError', (errData: any) => {
-      console.error(errData.parserError);
-      return res.status(500).json({ error: 'Failed to parse PDF.' });
-    });
-
-    pdfParser.on('pdfParser_dataReady', (pdfData: any) => {
-      const rawText = pdfParser.getRawTextContent();
-      
-      const cleanText = rawText.replace(/----------------Page \(\d+\) Break----------------/g, '').replace(/\r\n/g, '');
-
-      return res.json({ 
-        success: true, 
-        text: cleanText 
+    try {
+      const cleanText = await extractTextFromPDF(pdfBuffer);
+      return res.json({
+        success: true,
+        text: cleanText,
       });
-    });
-
-    pdfParser.parseBuffer(pdfBuffer);
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({ error: 'Failed to parse PDF.' });
+    }
   });
 
   req.pipe(busboy);
+};
+
+export const analyzeResume = async (
+  req: Request,
+  res: Response<ResumeAnalysisResponse>,
+) => {
+  if (req.method !== 'POST') {
+    return res.status(405).end();
+  }
+  const { resumeText, jobDescription } = req.body as ResumeAnalysisRequest;
+
+  res.json({
+    success: true,
+    data: await getGeminiAnalysis(resumeText, jobDescription),
+  });
 };

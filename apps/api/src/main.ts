@@ -1,18 +1,22 @@
 import express from 'express';
 import * as path from 'path';
-import { onRequest } from 'firebase-functions/v2/https'; // If using Firebase
-import { analyzeResume } from './resume.controller';
+import { onRequest } from 'firebase-functions/v2/https';
+import { analyzeResume, extractTextFromPDFHandler } from './resume.controller';
 
 const app = express();
 
-app.use(express.json()); // Important for parsing JSON bodies
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/api', (req, res) => {
+app.get('', (req, res) => {
   res.send({ message: 'Welcome to the Resume Analyzer API!' });
 });
 
-app.post('/api/analyze', (req, res) => {
+app.post('/extractText', (req, res) => {
+  extractTextFromPDFHandler(req, res);
+});
+
+app.post('/analyze', (req, res) => {
   analyzeResume(req, res);
 });
 
