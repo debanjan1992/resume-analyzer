@@ -3,7 +3,7 @@
     <div class="title flex flex-col flex-1">
       <h1 class="text-3xl font-bold mb-1">Analysis Report</h1>
       <h4 class="text-sm text-stone-500">
-        Generated on Jan 10, 2026 - Target Role:
+        Generated on {{ date | date : 'shortDate'}} - Target Role:
         {{store.analysisResult()?.targetRole}}
       </h4>
     </div>

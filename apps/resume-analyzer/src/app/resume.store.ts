@@ -10,7 +10,7 @@ import {
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import { ResumeAnalysis } from '@resume-analyzer/models';
 import { ResumeService } from './resume.service';
-import { catchError, pipe, switchMap, tap } from 'rxjs';
+import { catchError, finalize, pipe, switchMap, tap } from 'rxjs';
 import { Router } from '@angular/router';
 
 interface ResumeAnalysisState {
@@ -56,11 +56,7 @@ export const ResumeAnalysisStore = signalStore(
               patchState(store, { resumeText: response.text });
             }
           }),
-          catchError((err) => {
-            console.error('Error extracting text:', err);
-            patchState(store, { isTextExtracting: false });
-            return [];
-          }),
+          finalize(() => patchState(store, { isTextExtracting: false })),
         ),
       );
 
@@ -81,11 +77,7 @@ export const ResumeAnalysisStore = signalStore(
               router.navigate(['/analysis']);
             }
           }),
-          catchError((err) => {
-            console.error('Error analyzing resume:', err);
-            patchState(store, { isAnalyzing: false });
-            return [];
-          }),
+          finalize(() => patchState(store, { isAnalyzing: false })),
         ),
       );
 

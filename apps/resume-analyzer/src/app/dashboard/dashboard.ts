@@ -11,6 +11,7 @@ import { QuantifiableImpactComponent } from "./cards/quantifiable-impact/quantif
 import { RecommendationsComponent } from './cards/recommendations/recommendations.component';
 import { CriticalFixesComponent } from "./cards/critical-fixes/critical-fixes.component";
 import { Router, RouterLink } from "@angular/router";
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
@@ -25,7 +26,8 @@ import { Router, RouterLink } from "@angular/router";
     QuantifiableImpactComponent,
     RecommendationsComponent,
     CriticalFixesComponent,
-    RouterLink
+    RouterLink,
+    DatePipe,
 ],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss',
@@ -34,6 +36,7 @@ import { Router, RouterLink } from "@angular/router";
 export class Dashboard {
   store = inject(ResumeAnalysisStore);
   router = inject(Router);
+  date = new Date();
 
   constructor() {
     effect(() => {

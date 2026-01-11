@@ -54,7 +54,7 @@
       </div>
     </div>
     <hr class="border-t border-slate-200 my-4" />
-    <div class="flex items-center gap-4">
+    <div class="flex gap-4">
       <div class="matched flex-1">
         <header
           class="text-xs font-semibold text-red-700 bg-red-100 mb-2 inline-block px-2 rounded-sm py-1"
@@ -64,7 +64,8 @@
 
         <div class="keywords-wrapper">
           @for (
-            keyword of store.analysisResult()?.keywordMatch?.matched;
+            keyword of store.analysisResult()?.keywordMatch
+              ?.missingHighPriority;
             track keyword
           ) {
             <div
@@ -79,30 +80,35 @@
           }
         </div>
       </div>
-      <div class="matched flex-1">
-        <header
-          class="text-xs font-semibold text-gray-700 bg-gray-100 mb-2 inline-block px-2 rounded-sm py-1"
-        >
-          NICE TO HAVE
-        </header>
+      @if (
+        store.analysisResult()?.keywordMatch?.missingLowPriority?.length !== 0
+      ) {
+        <div class="matched flex-1">
+          <header
+            class="text-xs font-semibold text-gray-700 bg-gray-100 mb-2 inline-block px-2 rounded-sm py-1"
+          >
+            NICE TO HAVE
+          </header>
 
-        <div class="keywords-wrapper">
-          @for (
-            keyword of store.analysisResult()?.keywordMatch?.matched;
-            track keyword
-          ) {
-            <div
-              class="keyword-item inline-block border border-gray-300 text-gray-700 text-xs ps-1 pe-2 mx-2 my-1 rounded-full flex items-center gap-1"
-            >
-              <span
-                class="material-symbols-outlined align-middle text-gray-500 text-xs scale-75"
-                >add</span
+          <div class="keywords-wrapper">
+            @for (
+              keyword of store.analysisResult()?.keywordMatch
+                ?.missingLowPriority;
+              track keyword
+            ) {
+              <div
+                class="keyword-item inline-block border border-gray-300 text-gray-700 text-xs ps-1 pe-2 mx-2 my-1 rounded-full flex items-center gap-1"
               >
-              <span>{{ keyword }}</span>
-            </div>
-          }
+                <span
+                  class="material-symbols-outlined align-middle text-gray-500 text-xs scale-75"
+                  >add</span
+                >
+                <span>{{ keyword }}</span>
+              </div>
+            }
+          </div>
         </div>
-      </div>
+      }
     </div>
   </div>
 </div>
