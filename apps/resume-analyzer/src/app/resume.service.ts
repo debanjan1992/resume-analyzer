@@ -5,6 +5,7 @@ import {
   TextExtractionResponse,
 } from '@resume-analyzer/models';
 import { Observable, of } from 'rxjs';
+import { environment } from './environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +16,10 @@ export class ResumeService {
   extractTextFromFile(file: File): Observable<TextExtractionResponse> {
     const formData = new FormData();
     formData.append('file', file);
-    return this.http.post<TextExtractionResponse>('/api/extractText', formData);
+    return this.http.post<TextExtractionResponse>(
+      environment.apiUrl + '/extractText',
+      formData,
+    );
   }
 
   analyzeResume(
@@ -23,7 +27,7 @@ export class ResumeService {
     jobDescription: string,
     apiKey?: string,
   ): Observable<ResumeAnalysisResponse> {
-    let url = '/api/analyze';
+    let url = environment.apiUrl + '/analyze';
     if (apiKey) {
       url = url + '?apiKey=' + apiKey;
     }
