@@ -3,7 +3,6 @@ import Busboy from 'busboy';
 import { extractTextFromPDF } from './extract-text-from-pdf';
 import { getGeminiAnalysis } from './ai';
 import {
-  ResumeAnalysisRequest,
   ResumeAnalysisResponse,
   TextExtractionResponse,
 } from '@resume-analyzer/models';
@@ -15,7 +14,6 @@ export const extractTextFromPDFHandler = (
   if (req.method !== 'POST') {
     return res.status(405).end();
   }
-
   const busboy = Busboy({ headers: req.headers });
   const fileBuffers: Buffer[] = [];
 
@@ -46,20 +44,28 @@ export const extractTextFromPDFHandler = (
     }
   });
 
+  busboy.on('error', (error) => {
+    return res.status(500).json({ error: 'Failed to parse PDF.' });
+  });
+
   req.pipe(busboy);
 };
 
 export const analyzeResume = async (
   req: Request,
-  res: Response<ResumeAnalysisResponse>,
+  res: Response<ResumeAnalysisResponse | { error: string }>,
 ) => {
+  console.log('Analyzing resume...');
   if (req.method !== 'POST') {
     return res.status(405).end();
   }
-  const { resumeText, jobDescription } = req.body as ResumeAnalysisRequest;
-
+  const { resumeText, jobDescription } = req.body;
   res.json({
     success: true,
-    data: await getGeminiAnalysis(resumeText, jobDescription),
+    data: await getGeminiAnalysis(
+      resumeText,
+      jobDescription,
+      req.query.apiKey as string,
+    ),
   });
 };

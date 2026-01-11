@@ -1,12 +1,14 @@
 import { GoogleGenAI } from '@google/genai';
 import { ResumeAnalysis } from '@resume-analyzer/models';
 
-const ai = new GoogleGenAI({});
-
 export async function getGeminiAnalysis(
   resumeText: string,
   jobDescription: string,
+  apiKey?: string,
 ): Promise<ResumeAnalysis> {
+  const ai = new GoogleGenAI({
+    apiKey: apiKey || process.env.GOOGLE_API_KEY,
+  });
   const prompt = `
   You are an expert Technical Recruiter and ATS (Applicant Tracking System) Analyzer.
   
@@ -122,6 +124,5 @@ SCORING RUBRIC (Strictly Follow These Definitions):
   });
   const text = result.text.trim();
 
-  // Parse the string into a real Object
   return JSON.parse(text);
 }

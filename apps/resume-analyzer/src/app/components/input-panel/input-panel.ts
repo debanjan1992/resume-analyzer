@@ -34,6 +34,7 @@ export class InputPanel implements OnInit {
   form = this.fb.group({
     resumeText: ['', Validators.required],
     targetJobDescription: ['', Validators.required],
+    apiKey: ['']
   });
   selectedFile = signal<File | null>(null);
 
@@ -68,6 +69,8 @@ export class InputPanel implements OnInit {
   ngOnInit() {
     this.form.valueChanges.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((value) => {
       this.store.setJobDescription(value.targetJobDescription || '');
+      this.store.setResumeText(value.resumeText || '');
+      this.store.setAPIKey(value.apiKey || '');
     });
   }
 

@@ -15,6 +15,7 @@ import { Router } from '@angular/router';
 
 interface ResumeAnalysisState {
   analysisResult: ResumeAnalysis | null;
+  apiKey: string;
   isAnalyzing: boolean;
   isTextExtracting: boolean;
   jobDescription: string;
@@ -27,63 +28,76 @@ const initialState: ResumeAnalysisState = {
   isTextExtracting: false,
   jobDescription: '',
   resumeText: '',
+  apiKey: '',
 };
 
 export const ResumeAnalysisStore = signalStore(
   withState(initialState),
-  withMethods((store, resumeService = inject(ResumeService), router = inject(Router)) => {
-    const setJobDescription = (jobDescription: string) => {
-      patchState(store, { jobDescription });
-    };
+  withMethods(
+    (store, resumeService = inject(ResumeService), router = inject(Router)) => {
+      const setJobDescription = (jobDescription: string) => {
+        patchState(store, { jobDescription });
+      };
+      const setResumeText = (resumeText: string) => {
+        patchState(store, { resumeText });
+      };
 
-    const extractTextFromFile = rxMethod<File>(
-      pipe(
-        tap(() => patchState(store, { isTextExtracting: true })),
-        switchMap((file) => resumeService.extractTextFromFile(file)),
-        tap((response) => {
-          patchState(store, { isTextExtracting: false });
-          if (response.success) {
-            patchState(store, { resumeText: response.text });
-          }
-        }),
-        catchError((err) => {
-          console.error('Error extracting text:', err);
-          patchState(store, { isTextExtracting: false });
-          return [];
-        }),
-      ),
-    );
+      const setAPIKey = (apiKey: string) => {
+        patchState(store, { apiKey });
+      };
 
-    const analyzeResume = rxMethod<void>(
-      pipe(
-        tap(() => patchState(store, { isAnalyzing: true })),
-        switchMap(() =>
-          resumeService.analyzeResume(
-            store.resumeText(),
-            store.jobDescription(),
-          ),
+      const extractTextFromFile = rxMethod<File>(
+        pipe(
+          tap(() => patchState(store, { isTextExtracting: true })),
+          switchMap((file) => resumeService.extractTextFromFile(file)),
+          tap((response) => {
+            patchState(store, { isTextExtracting: false });
+            if (response.success) {
+              patchState(store, { resumeText: response.text });
+            }
+          }),
+          catchError((err) => {
+            console.error('Error extracting text:', err);
+            patchState(store, { isTextExtracting: false });
+            return [];
+          }),
         ),
-        tap((response) => {
-          patchState(store, { isAnalyzing: false });
-          if (response.success) {
-            patchState(store, { analysisResult: response.data });
-            router.navigate(['/analysis']);
-          }
-        }),
-        catchError((err) => {
-          console.error('Error analyzing resume:', err);
-          patchState(store, { isAnalyzing: false });
-          return [];
-        }),
-      ),
-    );
+      );
 
-    return {
-      setJobDescription,
-      extractTextFromFile,
-      analyzeResume,
-    };
-  }),
+      const analyzeResume = rxMethod<void>(
+        pipe(
+          tap(() => patchState(store, { isAnalyzing: true })),
+          switchMap(() =>
+            resumeService.analyzeResume(
+              store.resumeText(),
+              store.jobDescription(),
+              store.apiKey(),
+            ),
+          ),
+          tap((response) => {
+            patchState(store, { isAnalyzing: false });
+            if (response.success) {
+              patchState(store, { analysisResult: response.data });
+              router.navigate(['/analysis']);
+            }
+          }),
+          catchError((err) => {
+            console.error('Error analyzing resume:', err);
+            patchState(store, { isAnalyzing: false });
+            return [];
+          }),
+        ),
+      );
+
+      return {
+        setJobDescription,
+        setResumeText,
+        setAPIKey,
+        extractTextFromFile,
+        analyzeResume,
+      };
+    },
+  ),
   withComputed((store) => ({
     isLoading: computed(() => store.isAnalyzing() || store.isTextExtracting()),
   })),

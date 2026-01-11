@@ -134,18 +134,18 @@
         </div>
       </section>
     </div>
-    <footer class="flex justify-end mt-6">
+    <footer class="flex justify-end mt-6 gap-4">
+      <input
+          type="text"
+          formControlName="apiKey"
+          class="bg-white placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 transition duration-300 ease-in-out focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 hover:border-slate-300 shadow-sm focus:shadow w-2/5"
+          placeholder="Enter Gemini API Key here..."
+        />
       <button
         class="flex items-center gap-1 bg-indigo-600 text-white px-6 py-2 rounded-md hover:bg-indigo-700 transition cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
         type="submit"
         [disabled]="form.invalid || store.isLoading()"
       >
-        <span
-          class="material-symbols-outlined text-white"
-          [class.animate-spin]="store.isLoading()"
-        >
-          toys_fan
-        </span>
         <span>Analyze Resume</span>
       </button>
     </footer>

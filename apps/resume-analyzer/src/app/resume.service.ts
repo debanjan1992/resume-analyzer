@@ -21,8 +21,13 @@ export class ResumeService {
   analyzeResume(
     resumeText: string,
     jobDescription: string,
+    apiKey?: string,
   ): Observable<ResumeAnalysisResponse> {
-    return this.http.post<ResumeAnalysisResponse>('/api/analyze', {
+    let url = '/api/analyze';
+    if (apiKey) {
+      url = url + '?apiKey=' + apiKey;
+    }
+    return this.http.post<ResumeAnalysisResponse>(url, {
       resumeText,
       jobDescription,
     });
