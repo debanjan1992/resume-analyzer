@@ -1,0 +1,66 @@
+<div
+  class="w-full h-full bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden p-6"
+>
+  <header class="flex items-center mb-6">
+    <h3 class="font-bold flex-1">Quick Wins</h3>
+  </header>
+  <div class="content flex flex-col gap-8">
+    <ng-container
+      [ngTemplateOutlet]="quickMetric"
+      [ngTemplateOutletContext]="{
+        metric: {
+          icon: 'bolt',
+          label: 'Power Verbs',
+          sublabel: 'Action-oriented language',
+          value: '' + store.analysisResult()?.powerVerbs?.score || 0 + '/10',
+          textColor: 'text-indigo-600',
+          bgColor: 'bg-indigo-100',
+        },
+      }"
+    ></ng-container>
+    <ng-container
+      [ngTemplateOutlet]="quickMetric"
+      [ngTemplateOutletContext]="{
+        metric: {
+          icon: 'metro',
+          label: 'Metrics',
+          sublabel: 'Quantifiable Achievements',
+          value: store.analysisResult()?.quantifiableMetrics?.count || 0,
+          textColor: 'text-sky-600',
+          bgColor: 'bg-sky-100',
+        },
+      }"
+    ></ng-container>
+    <ng-container
+      [ngTemplateOutlet]="quickMetric"
+      [ngTemplateOutletContext]="{
+        metric: {
+          icon: 'text_format',
+          label: 'Formatting - Tone',
+          sublabel: 'ATS Parsability',
+          value: store.analysisResult()?.formattingCheck?.tone,
+          textColor: 'text-purple-600',
+          bgColor: 'bg-purple-100',
+        },
+      }"
+    ></ng-container>
+  </div>
+</div>
+
+<ng-template #quickMetric let-metric="metric">
+  <div class="metric flex gap-2 items-center">
+    <div
+      class="icon p-2 rounded-md flex items-center justify-center"
+      [ngClass]="metric.textColor + ' ' + metric.bgColor"
+    >
+      <span class="material-symbols-outlined">{{ metric.icon }}</span>
+    </div>
+    <div class="data flex flex-col flex-1">
+      <span class="font-medium text-sm">{{ metric.label }}</span>
+      <span class="text-xs text-stone-500">{{ metric.sublabel }}</span>
+    </div>
+    <div class="value flex flex-col">
+      <span class="text-md font-bold">{{ metric.value }}</span>
+    </div>
+  </div>
+</ng-template>

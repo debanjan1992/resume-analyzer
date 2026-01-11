@@ -19,19 +19,47 @@ export async function getGeminiAnalysis(
   TASK:
   Analyze the resume deeply against the JD. Be critical but constructive.
   
-  SCORING ALGORITHM (STRICT):
-  - Base Score: 0
-  - +20 pts for matching top 5 hard skills from JD.
-  - +20 pts for clear Experience section with power verbs.
-  - +20 pts for quantifiable metrics (numbers, $, %).
-  - +10 pts for Education/Certifications relevance.
-  - +10 pts for Formatting/Readability (inferred from text structure).
-  - +20 pts for overall relevance to the specific role.
-  - Cap at 100. Deduct 5 pts for every critical section missing.
+SCORING RUBRIC (Strictly Follow These Definitions):
+
+  1. "hardSkills" (0-20 pts):
+     - 20 pts: Matches ALL top 5 technical skills/tools listed in JD (e.g., React, Node, AWS).
+     - 15 pts: Matches most critical skills but misses 1-2 key tools.
+     - 10 pts: Matches general stack but misses specific framework requirements.
+     - <10 pts: Significant skill gaps or wrong tech stack.
+
+  2. "experience" (0-20 pts):
+     - 20 pts: Experience is highly relevant, uses strong power verbs (Led, Architected), and shows clear career progression.
+     - 15 pts: Relevant roles but passive language ("Responsible for...").
+     - <10 pts: Experience is vague, short tenure, or irrelevant to the target role.
+
+  3. "metrics" (0-20 pts):
+     - 20 pts: Resume is dense with impact data (e.g., "Improved latency by 20%", "Managed $50k budget").
+     - 15 pts: Contains some numbers but they are generic (e.g., "Led a team of 5").
+     - 0-5 pts: Purely descriptive with ZERO numbers or quantifiable results.
+
+  4. "formatting" (0-10 pts):
+     - 10 pts: Perfect readability. Clear headings, consistent dates, bullet points, no dense walls of text.
+     - 5 pts: Readable but cluttered or inconsistent styling.
+     - 0 pts: Hard to parse, bad structure, or typos detected.
+
+  5. "education" (0-10 pts):
+     - 10 pts: Degree matches the field (CS/Engineering) OR equivalent strong certification/experience is present.
+     - 5 pts: Unrelated degree or missing details.
+
+  6. "relevance" (0-20 pts):
+     - 20 pts: The candidate is a "Perfect Fit" for THIS specific JD.
+     - 10 pts: Good candidate but might be too junior/senior or pivoting from a different domain.
+     - 0 pts: Completely irrelevant profile for this job.
+
+  KEYWORD ANALYSIS RULES:
+  1. "Matched": Keywords found in BOTH the Resume and JD.
+  2. "High Priority Missing": Critical hard skills/tools mentioned in the JD's "Requirements" or "Qualifications" section that are MISSING from the resume.
+  3. "Nice to Have": Skills mentioned in "Preferred Qualifications", "Bonus Skills", or "Pluses" that are MISSING.
 
   OUTPUT FORMAT:
   Return ONLY a raw JSON object with this exact schema:
   {
+    "targetRole": "string", // Extract the exact Job Title from the JD (e.g. "Senior Frontend Engineer"). If not explicitly stated, infer it.
     "overallScore": number (0-100),
     
     // NEW: Breakdown of why the score is what it is
@@ -69,8 +97,8 @@ export async function getGeminiAnalysis(
     },
 
     "keywordMatch": {
-      "score": number (0-100),
-      "matched": ["string"],        // Keywords found
+      "score": number (0-100), // Overall match percentage
+      "matched": ["string"],        // Keywords found e.g. ["Angular", "React", "Node.js"]
       "missingHighPriority": ["string"], // Critical technical skills missing
       "missingLowPriority": ["string"]   // Nice-to-have skills missing
     },

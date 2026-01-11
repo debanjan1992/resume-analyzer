@@ -1,0 +1,48 @@
+<div
+  class="w-full h-full bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden p-6"
+>
+  <header class="flex items-center mb-4 gap-1">
+    <span class="material-symbols-outlined text-4xl text-purple-600">
+      skillet
+    </span>
+    <span class="font-bold">Soft Skills</span>
+  </header>
+  <div class="content flex flex-wrap gap-4">
+    <div class="detected-skills">
+      <header class="mb-2 font-semibold text-sm">
+        Detected ({{
+          store.analysisResult()?.softSkills?.detected?.length ?? 0
+        }})
+      </header>
+      @for (
+        skill of store.analysisResult()?.softSkills?.detected;
+        track skill
+      ) {
+        <div class="flex items-center mb-1 text-sm gap-2">
+          <span class="material-symbols-outlined text-green-500"
+            >check_circle</span
+          >
+          <span>{{ skill }}</span>
+        </div>
+      }
+    </div>
+    @if (store.analysisResult()?.softSkills?.missing?.length || 0 > 0) {
+      <div class="missing-skills">
+        <header class="mb-2 font-semibold text-sm">
+          Missing ({{
+            store.analysisResult()?.softSkills?.missing?.length ?? 0
+          }})
+        </header>
+        @for (
+          skill of store.analysisResult()?.softSkills?.missing;
+          track skill
+        ) {
+          <div class="flex items-center mb-1 text-sm gap-2">
+            <span class="material-symbols-outlined text-red-500">error</span>
+            <span>{{ skill }}</span>
+          </div>
+        }
+      </div>
+    }
+  </div>
+</div>

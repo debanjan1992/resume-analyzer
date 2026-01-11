@@ -1,4 +1,5 @@
 export interface ResumeAnalysis {
+  targetRole: string;
   overallScore: number;
   scoreBreakdown: {
     hardSkills: number;

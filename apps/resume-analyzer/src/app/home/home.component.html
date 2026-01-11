@@ -1,19 +1,11 @@
-<app-hero></app-hero>
 <section>
   @if (store.isAnalyzing()) {
     <div class="analysis-in-progress mb-16">
       <app-analysis-in-progress></app-analysis-in-progress>
     </div>
-  }
-  @if (store.analysisResult() == null && !store.isAnalyzing()) {
+  } @else {
     <div class="inputs mb-16">
       <app-input-panel></app-input-panel>
-    </div>
-  }
-
-  @if (store.analysisResult()) {
-    <div class="analysis">
-      <app-analysis></app-analysis>
     </div>
   }
 </section>

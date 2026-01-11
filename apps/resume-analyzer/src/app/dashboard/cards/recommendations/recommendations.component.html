@@ -1,0 +1,27 @@
+<div
+  class="w-full h-full bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden p-6"
+>
+  <header class="flex items-center mb-4 gap-1">
+    <span class="material-symbols-outlined text-4xl text-rose-600">
+      flare
+    </span>
+    <span class="font-bold">Recommendations</span>
+  </header>
+  <div class="content flex flex-col flex-wrap gap-4 h-full">
+    @if (store.analysisResult()?.recommendedImprovements?.length === 0) {
+      <div class="text-sm text-center font-medium text-stone-500 mt-8">No recommendations available.</div>
+    } @else {
+      @for (
+        recommendation of store.analysisResult()?.recommendedImprovements ?? [];
+        track recommendation
+      ) {
+        <div class="flex items-center text-sm gap-2 rounded-sm w-full">
+          <span class="material-symbols-outlined text-amber-600"
+            >arrow_forward</span
+          >
+          <span class="font-medium">{{ recommendation }}</span>
+        </div>
+      }
+    }
+  </div>
+</div>

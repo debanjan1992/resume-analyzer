@@ -102,12 +102,11 @@
           <div
             class="divider flex items-center gap-2 mb-4 text-gray-400 justify-center"
           >
-            <span class="text-lg">----------------------</span>
+            <hr class="flex-grow border-t border-gray-200" />
             <span class="text-xs">or paste text directly</span>
-            <span class="text-lg">----------------------</span>
+            <hr class="flex-grow border-t border-gray-200" />
           </div>
           <textarea
-            [disabled]="store.isLoading()"
             [rows]="6"
             formControlName="resumeText"
             [placeholder]="resumePlaceholder()"
@@ -127,7 +126,6 @@
         </header>
         <div class="content flex-1">
           <textarea
-            [disabled]="store.isLoading()"
             formControlName="targetJobDescription"
             [rows]="10"
             [placeholder]="jobDescriptionPlaceholder()"

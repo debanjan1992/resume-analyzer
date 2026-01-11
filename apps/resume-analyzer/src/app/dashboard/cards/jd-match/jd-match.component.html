@@ -1,0 +1,108 @@
+<div
+  class="w-full h-full bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden p-6"
+>
+  <header class="flex items-center mb-1">
+    <div class="title flex flex-col flex-1">
+      <div class="main-title flex items-center gap-1">
+        <span class="material-symbols-outlined text-4xl text-indigo-600">
+          description
+        </span>
+        <span class="text-xl font-bold">Job Description Match</span>
+      </div>
+      <p class="text-sm text-stone-500 font-medium">
+        Comparison against target "{{ store.analysisResult()?.targetRole }}"
+        role
+      </p>
+    </div>
+    <div class="score flex flex-col items-end">
+      <span class="text-3xl font-bold text-indigo-600"
+        >{{ store.analysisResult()?.keywordMatch?.score }}%</span
+      >
+      <span class="text-sm text-stone-500">Match Rate</span>
+    </div>
+  </header>
+  <div class="w-full bg-slate-100 rounded-full h-1 overflow-hidden mb-6">
+    <div
+      class="h-full rounded-full transition-all duration-1000 ease-out bg-amber-600"
+      [style.width.%]="store.analysisResult()?.keywordMatch?.score"
+    ></div>
+  </div>
+
+  <div class="content">
+    <div class="matched mb-4">
+      <header
+        class="text-xs font-semibold text-green-700 bg-green-100 mb-2 inline-block px-2 rounded-sm py-1"
+      >
+        MATCHED KEYWORDS
+      </header>
+
+      <div class="keywords-wrapper">
+        @for (
+          keyword of store.analysisResult()?.keywordMatch?.matched;
+          track keyword
+        ) {
+          <div
+            class="keyword-item inline-block border border-green-300 text-green-700 text-xs ps-1 pe-2 mx-2 my-1 rounded-full flex items-center gap-1"
+          >
+            <span
+              class="material-symbols-outlined align-middle text-green-500 text-xs scale-75"
+              >check</span
+            >
+            <span>{{ keyword }}</span>
+          </div>
+        }
+      </div>
+    </div>
+    <hr class="border-t border-slate-200 my-4" />
+    <div class="flex items-center gap-4">
+      <div class="matched flex-1">
+        <header
+          class="text-xs font-semibold text-red-700 bg-red-100 mb-2 inline-block px-2 rounded-sm py-1"
+        >
+          HIGH PRIORITY MISSING
+        </header>
+
+        <div class="keywords-wrapper">
+          @for (
+            keyword of store.analysisResult()?.keywordMatch?.matched;
+            track keyword
+          ) {
+            <div
+              class="keyword-item inline-block border border-red-300 text-red-700 text-xs ps-1 pe-2 mx-2 my-1 rounded-full flex items-center gap-1"
+            >
+              <span
+                class="material-symbols-outlined align-middle text-red-500 text-xs scale-75"
+                >error</span
+              >
+              <span>{{ keyword }}</span>
+            </div>
+          }
+        </div>
+      </div>
+      <div class="matched flex-1">
+        <header
+          class="text-xs font-semibold text-gray-700 bg-gray-100 mb-2 inline-block px-2 rounded-sm py-1"
+        >
+          NICE TO HAVE
+        </header>
+
+        <div class="keywords-wrapper">
+          @for (
+            keyword of store.analysisResult()?.keywordMatch?.matched;
+            track keyword
+          ) {
+            <div
+              class="keyword-item inline-block border border-gray-300 text-gray-700 text-xs ps-1 pe-2 mx-2 my-1 rounded-full flex items-center gap-1"
+            >
+              <span
+                class="material-symbols-outlined align-middle text-gray-500 text-xs scale-75"
+                >add</span
+              >
+              <span>{{ keyword }}</span>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

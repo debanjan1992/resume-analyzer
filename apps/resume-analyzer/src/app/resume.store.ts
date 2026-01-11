@@ -3,6 +3,7 @@ import {
   patchState,
   signalStore,
   withComputed,
+  withHooks,
   withMethods,
   withState,
 } from '@ngrx/signals';
@@ -10,6 +11,7 @@ import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import { ResumeAnalysis } from '@resume-analyzer/models';
 import { ResumeService } from './resume.service';
 import { catchError, pipe, switchMap, tap } from 'rxjs';
+import { Router } from '@angular/router';
 
 interface ResumeAnalysisState {
   analysisResult: ResumeAnalysis | null;
@@ -29,8 +31,7 @@ const initialState: ResumeAnalysisState = {
 
 export const ResumeAnalysisStore = signalStore(
   withState(initialState),
-  withMethods((store, resumeService = inject(ResumeService)) => {
-
+  withMethods((store, resumeService = inject(ResumeService), router = inject(Router)) => {
     const setJobDescription = (jobDescription: string) => {
       patchState(store, { jobDescription });
     };
@@ -66,6 +67,7 @@ export const ResumeAnalysisStore = signalStore(
           patchState(store, { isAnalyzing: false });
           if (response.success) {
             patchState(store, { analysisResult: response.data });
+            router.navigate(['/analysis']);
           }
         }),
         catchError((err) => {

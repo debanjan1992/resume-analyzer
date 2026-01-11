@@ -1,0 +1,44 @@
+<div
+  class="w-full h-full bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden p-6"
+>
+  <header class="flex items-center mb-4 gap-1">
+    <span class="material-symbols-outlined text-4xl text-lime-600">
+      apartment
+    </span>
+    <span class="font-bold">Structure Check</span>
+  </header>
+  <div class="content flex flex-wrap gap-4">
+    <div class="detected-skills flex-1">
+      <header class="mb-2 font-semibold text-sm">
+        Detected ({{
+          store.analysisResult()?.essentialSections?.detected?.length ?? 0
+        }})
+      </header>
+      @for (
+        skill of store.analysisResult()?.softSkills?.detected;
+        track skill
+      ) {
+        <div class="flex items-center mb-2 text-sm gap-2 px-2 py-1 bg-green-50 rounded-sm w-full">
+          <span class="text-green-600 font-medium">{{ skill }}</span>
+        </div>
+      }
+    </div>
+    @if (store.analysisResult()?.essentialSections?.missing?.length || 0 > 0) {
+      <div class="missing-skills flex-1">
+        <header class="mb-2 font-semibold text-sm">
+          Missing ({{
+            store.analysisResult()?.essentialSections?.missing?.length ?? 0
+          }})
+        </header>
+        @for (
+          skill of store.analysisResult()?.essentialSections?.missing;
+          track skill
+        ) {
+        <div class="flex items-center mb-2 text-sm gap-2 px-2 py-1 bg-red-50 rounded-sm w-full">
+          <span class="text-red-500 font-medium">{{ skill }}</span>
+        </div>
+        }
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,57 @@
+<div id="dashboard" class="my-4">
+  <header class="flex mb-8">
+    <div class="title flex flex-col flex-1">
+      <h1 class="text-3xl font-bold mb-1">Analysis Report</h1>
+      <h4 class="text-sm text-stone-500">
+        Generated on Jan 10, 2026 - Target Role:
+        {{store.analysisResult()?.targetRole}}
+      </h4>
+    </div>
+    <div class="actions flex items-center gap-2">
+      <button
+        class="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-md bg-white text-gray-700 hover:bg-gray-100 transition-colors font-medium text-sm cursor-pointer"
+      >
+        <span class="material-symbols-outlined">download</span>
+        <span>Download Report</span>
+      </button>
+      <button
+        class="flex items-center gap-2 px-4 py-2 rounded-md bg-indigo-600 hover:bg-indigo-700 text-white font-medium shadow transition-colors text-sm cursor-pointer"
+        [routerLink]="['/']"
+      >
+        <span class="material-symbols-outlined">edit</span>
+        <span>Try another</span>
+      </button>
+    </div>
+  </header>
+  <main>
+    @if(store.analysisResult()?.criticalFixes?.length !== 0) {
+    <div
+      class="alert-banner bg-red-100 border border-red-300 text-red-800 rounded-md p-4 mb-6 flex items-center gap-2"
+    >
+      <span class="material-symbols-outlined text-red-600">warning</span>
+      <span class="font-medium"
+        >Your resume has critical issues that need immediate attention. Please
+        review the 'Critical Fixes' section below.</span
+      >
+    </div>
+    }
+    <div class="top-row flex gap-4 mb-4 mt-4">
+      <app-ats-score class="flex-1"></app-ats-score>
+      <app-score-breakdown class="flex-1"></app-score-breakdown>
+      <app-quick-wins class="flex-1"></app-quick-wins>
+    </div>
+    <div class="second-row flex gap-4 mb-4">
+      <app-jd-match class="flex-5"></app-jd-match>
+      <app-impact-language class="flex-3"></app-impact-language>
+    </div>
+    <div class="third-row flex gap-4 mb-4">
+      <app-soft-skills class="flex-1"></app-soft-skills>
+      <app-structure-check class="flex-1"></app-structure-check>
+      <app-quantifiable-impact class="flex-1"></app-quantifiable-impact>
+    </div>
+    <div class="fourth-row flex gap-4 mb-4">
+      <app-recommendations class="flex-1"></app-recommendations>
+      <app-critical-fixes class="flex-1"></app-critical-fixes>
+    </div>
+  </main>
+</div>

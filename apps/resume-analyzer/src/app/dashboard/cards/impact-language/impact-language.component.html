@@ -1,0 +1,109 @@
+<div
+  class="w-full h-full bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden p-6"
+>
+  <header class="flex items-center mb-4 gap-1">
+    <span class="material-symbols-outlined text-4xl text-amber-600">
+      explosion
+    </span>
+    <span class="font-bold">Impact Language</span>
+  </header>
+  <div class="content">
+    <div class="w-full">
+      <div class="flex p-1 bg-slate-100 rounded-lg mb-6">
+        <button
+          (click)="setView('strong')"
+          class="flex-1 py-2 text-sm font-semibold rounded-md transition-all duration-200 cursor-pointer"
+          [class.bg-white]="activeView() === 'strong'"
+          [class.shadow-sm]="activeView() === 'strong'"
+          [class.text-slate-800]="activeView() === 'strong'"
+          [class.text-slate-500]="activeView() !== 'strong'"
+          [class.hover:text-slate-700]="activeView() !== 'strong'"
+        >
+          Strong Verbs
+        </button>
+
+        <button
+          (click)="setView('weak')"
+          class="flex-1 py-2 text-sm font-semibold rounded-md transition-all duration-200 cursor-pointer"
+          [class.bg-white]="activeView() === 'weak'"
+          [class.shadow-sm]="activeView() === 'weak'"
+          [class.text-slate-800]="activeView() === 'weak'"
+          [class.text-slate-500]="activeView() !== 'weak'"
+          [class.hover:text-slate-700]="activeView() !== 'weak'"
+        >
+          Weak Verbs
+        </button>
+      </div>
+
+      <div class="bg-white">
+        @if (activeView() === 'strong') {
+          <div class="animate-fade-in">
+            <h4 class="text-green-600 font-bold mb-4 flex items-center">
+              <svg
+                class="w-5 h-5 mr-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 10V3L4 14h7v7l9-11h-7z"
+                ></path>
+              </svg>
+              Power Verbs Found ({{
+                store.analysisResult()?.powerVerbs?.list?.length ?? 0
+              }})
+            </h4>
+            <div class="flex flex-wrap gap-2">
+              @for (
+                powerVerb of store.analysisResult()?.powerVerbs?.list;
+                track powerVerb
+              ) {
+                <span
+                  class="px-3 py-1 bg-green-50 text-green-700 rounded-lg text-xs font-medium border border-green-100"
+                  >{{ powerVerb }}</span
+                >
+              }
+            </div>
+          </div>
+        }
+
+        @if (activeView() === 'weak') {
+          <div class="animate-fade-in">
+            <h4 class="text-amber-600 font-bold mb-4 flex items-center">
+              <svg
+                class="w-5 h-5 mr-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                ></path>
+              </svg>
+              Weak Verbs ({{
+                store.analysisResult()?.powerVerbs?.weakVerbs?.length ?? 0
+              }})
+            </h4>
+            <div class="flex flex-wrap gap-2">
+              @for (
+                weakVerb of store.analysisResult()?.powerVerbs?.weakVerbs;
+                track weakVerb
+              ) {
+                <span
+                  class="px-3 py-1 bg-red-50 text-red-700 rounded-lg text-xs font-medium border border-red-100"
+                  >{{ weakVerb }}</span
+                >
+              }
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>

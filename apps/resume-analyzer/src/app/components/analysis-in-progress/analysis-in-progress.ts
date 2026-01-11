@@ -13,6 +13,11 @@ export class AnalysisInProgress {
     'Extracting keywords...',
     'Analyzing against Job Description...',
     'Generating suggestions...',
+    'Categorizing skills...',
+    'Parsing your experience, skills, and formatting...',
+    'Optimizing for ATS...',
+    'Reviewing quantifiable impacts...',
+    'Compiling results...'
   ];
   currentMessage = signal(this.messages[0]);
 
@@ -31,6 +36,6 @@ export class AnalysisInProgress {
     this.intervalId = setInterval(() => {
       index = (index + 1) % this.messages.length;
       this.currentMessage.set(this.messages[index]);
-    }, 5000);
+    }, 3000);
   }
 }

@@ -1,0 +1,39 @@
+<div
+  class="w-full h-full bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden p-6"
+>
+  <header class="flex items-center mb-6">
+    <h3 class="font-bold flex-1">Score Breakdown</h3>
+  </header>
+  <div class="content flex flex-col gap-4">
+    <app-score-bar
+      [score]="store.analysisResult()?.scoreBreakdown?.hardSkills || 0"
+      [label]="'Hard Skills'"
+      [color]="'indigo'"
+    ></app-score-bar>
+    <app-score-bar
+      [score]="store.analysisResult()?.scoreBreakdown?.experience || 0"
+      [label]="'Experience'"
+      [color]="'indigo'"
+    ></app-score-bar>
+    <app-score-bar
+      [score]="store.analysisResult()?.scoreBreakdown?.metrics || 0"
+      [label]="'Metrics'"
+      [color]="'amber'"
+    ></app-score-bar>
+    <app-score-bar
+      [score]="store.analysisResult()?.scoreBreakdown?.formatting || 0"
+      [label]="'Formatting'"
+      [color]="'green'"
+    ></app-score-bar>
+    <app-score-bar
+      [score]="store.analysisResult()?.scoreBreakdown?.education || 0"
+      [label]="'Education'"
+      [color]="'green'"
+    ></app-score-bar>
+    <app-score-bar
+      [score]="store.analysisResult()?.scoreBreakdown?.relevance || 0"
+      [label]="'Relevance'"
+      [color]="'indigo'"
+    ></app-score-bar>
+  </div>
+</div>

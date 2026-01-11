@@ -1,0 +1,28 @@
+<div
+  class="w-full h-full bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden p-6"
+>
+  <header class="flex items-center mb-4 gap-1">
+    <span class="material-symbols-outlined text-4xl text-red-600">
+      cloud_alert
+    </span>
+    <span class="font-bold">Critical Fixes</span>
+  </header>
+  <div class="content flex flex-col flex-wrap gap-4">
+    @if (store.analysisResult()?.criticalFixes?.length === 0) {
+      <div class="text-sm text-center font-medium text-stone-500 mt-8">
+        No critical fixes.
+      </div>
+    } @else {
+      @for (fix of store.analysisResult()?.criticalFixes ?? []; track fix) {
+        <div
+          class="flex items-center text-sm gap-2 rounded-sm w-full bg-red-100 px-2 py-1"
+        >
+          <span class="material-symbols-outlined text-red-600"
+            >select_check_box</span
+          >
+          <span class="font-medium text-red-900">{{ fix }}</span>
+        </div>
+      }
+    }
+  </div>
+</div>
