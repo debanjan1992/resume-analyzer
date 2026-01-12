@@ -46,8 +46,6 @@ export class InputPanel implements OnInit {
     
     Requirements:
     - 5+ years experience in React
-    - Strong knowledge of TypeScript
-    - Experience with RESTful APIs
     - Excellent problem-solving skills
     - Strong communication and teamwork abilities
     `);

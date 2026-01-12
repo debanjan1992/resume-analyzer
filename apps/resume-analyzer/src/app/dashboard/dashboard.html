@@ -1,13 +1,13 @@
 <div id="dashboard" class="my-4">
-  <header class="flex mb-8">
-    <div class="title flex flex-col flex-1">
+  <header class="flex flex-col gap-4 md:flex-row mb-8">
+    <div class="title flex flex-col flex-1 text-center md:text-left">
       <h1 class="text-3xl font-bold mb-1">Analysis Report</h1>
       <h4 class="text-sm text-stone-500">
         Generated on {{ date | date : 'shortDate'}} - Target Role:
         {{store.analysisResult()?.targetRole}}
       </h4>
     </div>
-    <div class="actions flex items-center gap-2">
+    <div class="actions flex justify-center items-center gap-2">
       <button
         class="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-md bg-white text-gray-700 hover:bg-gray-100 transition-colors font-medium text-sm cursor-pointer"
       >
@@ -35,23 +35,17 @@
       >
     </div>
     }
-    <div class="top-row flex gap-4 mb-4 mt-4">
-      <app-ats-score class="flex-1"></app-ats-score>
-      <app-score-breakdown class="flex-1"></app-score-breakdown>
-      <app-quick-wins class="flex-1"></app-quick-wins>
-    </div>
-    <div class="second-row flex gap-4 mb-4">
-      <app-jd-match class="flex-5"></app-jd-match>
-      <app-impact-language class="flex-3"></app-impact-language>
-    </div>
-    <div class="third-row flex gap-4 mb-4">
-      <app-soft-skills class="flex-1"></app-soft-skills>
-      <app-structure-check class="flex-1"></app-structure-check>
-      <app-quantifiable-impact class="flex-1"></app-quantifiable-impact>
-    </div>
-    <div class="fourth-row flex gap-4 mb-4">
-      <app-recommendations class="flex-1"></app-recommendations>
-      <app-critical-fixes class="flex-1"></app-critical-fixes>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <app-ats-score class="col-span-1"></app-ats-score>
+      <app-score-breakdown class="col-span-1"></app-score-breakdown>
+      <app-quick-wins class="col-span-1"></app-quick-wins>
+      <app-jd-match class="col-span-1 md:col-span-2"></app-jd-match>
+      <app-impact-language class="col-span-1"></app-impact-language>
+      <app-soft-skills class="col-span-1"></app-soft-skills>
+      <app-structure-check class="col-span-1"></app-structure-check>
+      <app-quantifiable-impact class="col-span-1"></app-quantifiable-impact>
+      <app-recommendations class="col-span-1 md:col-span-2"></app-recommendations>
+      <app-critical-fixes class="col-span-1"></app-critical-fixes>
     </div>
   </main>
 </div>
