@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "build": "nx run resume-analyzer:build:production"
+    "build-ui:prod": "nx run resume-analyzer:build:production",
+    "build-backend:prod": "nx run api:build"
   },
   "private": true,
   "dependencies": {
