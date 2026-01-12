@@ -4,8 +4,8 @@ import {
   ResumeAnalysisResponse,
   TextExtractionResponse,
 } from '@resume-analyzer/models';
-import { Observable, of } from 'rxjs';
-import { environment } from './environments/environment';
+import { Observable } from 'rxjs';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root',
