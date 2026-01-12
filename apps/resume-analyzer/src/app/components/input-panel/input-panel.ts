@@ -85,7 +85,7 @@ export class InputPanel implements OnInit {
     const file: File = event.target.files[0];
     if (file) {
       this.selectedFile.set(file);
-      this.extractTextFromFile();
+      this.extractTextFromFile()
     }
   }
 

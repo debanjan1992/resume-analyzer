@@ -1,15 +1,4 @@
-import { GoogleGenAI } from '@google/genai';
-import { ResumeAnalysis } from '@resume-analyzer/models';
-
-export async function getGeminiAnalysis(
-  resumeText: string,
-  jobDescription: string,
-  apiKey?: string,
-): Promise<ResumeAnalysis> {
-  const ai = new GoogleGenAI({
-    apiKey: apiKey || process.env.GOOGLE_API_KEY,
-  });
-  const prompt = `
+export const getPrompt = (resumeText: string, jobDescription: string) => `
   You are an expert Technical Recruiter and ATS (Applicant Tracking System) Analyzer.
   
   RESUME TEXT:
@@ -117,12 +106,3 @@ SCORING RUBRIC (Strictly Follow These Definitions):
     "recommendedImprovements": ["string"] // Polish (e.g. "Change 'Helped' to 'Led'")
   }
 `;
-  const result = await ai.models.generateContent({
-    model: 'gemini-2.5-flash',
-    config: { responseMimeType: 'application/json', temperature: 0, topP: 1 },
-    contents: prompt,
-  });
-  const text = result.text.trim();
-
-  return JSON.parse(text);
-}

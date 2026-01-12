@@ -1,14 +1,19 @@
 import { Request, Response } from 'express';
 import Busboy from 'busboy';
-import { extractTextFromPDF } from './extract-text-from-pdf';
-import { getGeminiAnalysis } from './ai';
+import { extractTextFromPDF } from '../helpers/extract-text-from-pdf';
+import { getGeminiAnalysis } from '../helpers/ai';
 import {
   ResumeAnalysisResponse,
   TextExtractionResponse,
 } from '@resume-analyzer/models';
+import { logger } from 'firebase-functions/logger';
+
+interface FirebaseRequest extends Request {
+  rawBody?: Buffer;
+}
 
 export const extractTextFromPDFHandler = (
-  req: Request,
+  req: FirebaseRequest,
   res: Response<TextExtractionResponse | { error: string }>,
 ) => {
   if (req.method !== 'POST') {
@@ -39,33 +44,41 @@ export const extractTextFromPDFHandler = (
         text: cleanText,
       });
     } catch (error) {
-      console.error(error);
       return res.status(500).json({ error: 'Failed to parse PDF.' });
     }
   });
 
   busboy.on('error', (error) => {
+    logger.error(error);
     return res.status(500).json({ error: 'Failed to parse PDF.' });
   });
 
-  req.pipe(busboy);
+  if (req.rawBody) {
+    busboy.end(req.rawBody);
+  } else {
+    req.pipe(busboy);
+  }
 };
 
 export const analyzeResume = async (
   req: Request,
   res: Response<ResumeAnalysisResponse | { error: string }>,
 ) => {
-  console.log('Analyzing resume...');
   if (req.method !== 'POST') {
     return res.status(405).end();
   }
-  const { resumeText, jobDescription } = req.body;
-  res.json({
-    success: true,
-    data: await getGeminiAnalysis(
-      resumeText,
-      jobDescription,
-      req.query.apiKey as string,
-    ),
-  });
+  try {
+    const { resumeText, jobDescription } = req.body;
+    res.json({
+      success: true,
+      data: await getGeminiAnalysis(
+        resumeText,
+        jobDescription,
+        req.query.apiKey as string,
+      ),
+    });
+  } catch (error) {
+    logger.error('Error analyzing resume with Gemini', error);
+    return res.status(500).json({ error });
+  }
 };
