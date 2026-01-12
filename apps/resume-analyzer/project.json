@@ -22,12 +22,6 @@
         ],
         "styles": ["apps/resume-analyzer/src/styles.scss"]
       },
-      "fileReplacements": [
-        {
-          "replace": "apps/resume-analyzer/src/environments/environment.ts",
-          "with": "apps/resume-analyzer/src/environments/environment.prod.ts"
-        }
-      ],
       "configurations": {
         "production": {
           "budgets": [
@@ -42,7 +36,13 @@
               "maximumError": "8kb"
             }
           ],
-          "outputHashing": "all"
+          "outputHashing": "all",
+          "fileReplacements": [
+            {
+              "replace": "apps/resume-analyzer/src/environments/environment.ts",
+              "with": "apps/resume-analyzer/src/environments/environment.prod.ts"
+            }
+          ]
         },
         "development": {
           "optimization": false,
