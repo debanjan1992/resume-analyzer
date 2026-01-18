@@ -3,30 +3,33 @@
     <div class="title flex flex-col flex-1 text-center md:text-left">
       <h1 class="text-3xl font-bold mb-1">Analysis Report</h1>
       <h4 class="text-sm text-stone-500">
-        Generated on {{ date | date : 'shortDate'}} - Target Role:
-        {{store.analysisResult()?.targetRole}}
+        Generated on {{ date | date : 'mediumDate'}} - Target Role:
+        <span class="font-medium text-stone-800"
+          >{{store.analysisResult()?.targetRole}}</span
+        >
       </h4>
     </div>
     <div class="actions flex justify-center items-center gap-2">
       <button
-        class="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-md bg-white text-gray-700 hover:bg-gray-100 transition-colors font-medium text-sm cursor-pointer"
+        class="flex items-center gap-2 px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-medium shadow transition-colors text-sm cursor-pointer"
+        [routerLink]="['/']"
+      >
+        <span class="material-symbols-outlined">upload</span>
+        <span>Re-upload</span>
+      </button>
+      <button
+        class="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-lg bg-white text-gray-700 hover:bg-gray-100 transition-colors font-medium text-sm cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 disabled:pointer-events-none"
+        disabled
       >
         <span class="material-symbols-outlined">download</span>
         <span>Download Report</span>
-      </button>
-      <button
-        class="flex items-center gap-2 px-4 py-2 rounded-md bg-indigo-600 hover:bg-indigo-700 text-white font-medium shadow transition-colors text-sm cursor-pointer"
-        [routerLink]="['/']"
-      >
-        <span class="material-symbols-outlined">edit</span>
-        <span>Try another</span>
       </button>
     </div>
   </header>
   <main>
     @if(store.analysisResult()?.criticalFixes?.length !== 0) {
     <div
-      class="alert-banner bg-red-100 border border-red-300 text-red-800 rounded-md p-4 mb-6 flex items-center gap-2"
+      class="alert-banner bg-red-100 border border-red-300 text-red-800 rounded-lg p-4 mb-6 flex items-center gap-2"
     >
       <span class="material-symbols-outlined text-red-600">warning</span>
       <span class="font-medium"
@@ -44,7 +47,9 @@
       <app-soft-skills class="col-span-1"></app-soft-skills>
       <app-structure-check class="col-span-1"></app-structure-check>
       <app-quantifiable-impact class="col-span-1"></app-quantifiable-impact>
-      <app-recommendations class="col-span-1 md:col-span-2"></app-recommendations>
+      <app-recommendations
+        class="col-span-1 md:col-span-2"
+      ></app-recommendations>
       <app-critical-fixes class="col-span-1"></app-critical-fixes>
     </div>
   </main>

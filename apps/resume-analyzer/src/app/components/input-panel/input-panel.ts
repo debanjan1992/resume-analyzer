@@ -76,7 +76,7 @@ export class InputPanel implements OnInit {
     if (this.form.invalid) {
       return;
     }
-    this.store.analyzeResume();
+    this.store.analyzeResume(false);
   }
 
   onFileSelected(event: any) {

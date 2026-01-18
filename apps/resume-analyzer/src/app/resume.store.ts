@@ -71,15 +71,16 @@ export const ResumeAnalysisStore = signalStore(
         ),
       );
 
-      const analyzeResume = rxMethod<void>(
+      const analyzeResume = rxMethod<boolean>(
         pipe(
           tap(() => patchState(store, { isAnalyzing: true })),
-          switchMap(() =>
+          switchMap((demo) =>
             resumeService
               .analyzeResume(
                 store.resumeText(),
                 store.jobDescription(),
                 store.apiKey(),
+                demo,
               )
               .pipe(
                 tapResponse({

@@ -1,0 +1,124 @@
+{
+  "success": true,
+  "data": {
+    "targetRole": "Workday Extend Developer",
+    "overallScore": 30,
+    "scoreBreakdown": {
+      "hardSkills": 0,
+      "experience": 0,
+      "metrics": 10,
+      "formatting": 10,
+      "education": 10,
+      "relevance": 0
+    },
+    "powerVerbs": {
+      "count": 20,
+      "score": 8,
+      "list": [
+        "Architected",
+        "Designed",
+        "Implemented",
+        "Collaborated",
+        "Optimizing"
+      ],
+      "weakVerbs": [
+        "Worked on",
+        "Responsible for",
+        "Helped",
+        "Involved in",
+        "Have worked on",
+        "Have been a part of"
+      ]
+    },
+    "quantifiableMetrics": {
+      "count": 3,
+      "list": [
+        "Worked on development and automation of 17 workflows across multiple middleware technologies using CORE Java and other scripting languages.",
+        "Developed 7-8 fully functional robust and mobile responsive websites for health check and administration, audit tracking, SLA tracking and ticket assignment.",
+        "Have been a part of the 4 member UI SME group for Global NICE where we plan out the next UI technological advancement to embrace in NICE Products - Micro Frontends, defining best practices."
+      ],
+      "suggestion": "Add specific impact metrics (e.g., percentage improvements, cost savings, user growth) to your frontend development projects, especially for component libraries and performance improvements. Quantify the impact of your architectural decisions and component library usage."
+    },
+    "essentialSections": {
+      "missing": [],
+      "detected": ["Profile", "Professional Experience", "Education", "Skills"]
+    },
+    "softSkills": {
+      "detected": [
+        "Collaboration",
+        "Leadership",
+        "Agile",
+        "Problem Solving",
+        "Communication",
+        "Detail-oriented",
+        "Project Management"
+      ],
+      "missing": [
+        "Ability to multitask",
+        "Exceptional time management skills",
+        "Comfortable working in a loosely structured, fast-paced organization",
+        "Working/communicating effectively with diverse business and IT staff in multiple locations and in a multinational environment"
+      ]
+    },
+    "keywordMatch": {
+      "score": 5,
+      "matched": [
+        "Agile",
+        "Jenkins",
+        "Docker",
+        "JIRA",
+        "REST Web Services",
+        "Web technologies"
+      ],
+      "missingHighPriority": [
+        "Workday Extend developer",
+        "Workday integration specialist",
+        "Workday HCM product suite",
+        "Custom Workday reports",
+        "Calculated fields (Workday)",
+        "BIRT Layout designs",
+        "Studio Integrations (Workday)",
+        "full-stack extend application (Workday)",
+        "Workday core HCM application",
+        "Business Processes (Workday)",
+        "Validation rule (Workday)",
+        "Security setup (Workday)",
+        "Notifications (Workday)",
+        "Inbound EIB",
+        "Outbound EIB",
+        "Workday API documentation",
+        "XML",
+        "XSLT",
+        "XPATH",
+        "SOA",
+        "SOAP",
+        "OAuth 2.0",
+        "Report-as-a-Service",
+        "System design specifications",
+        "Technical solutions development"
+      ],
+      "missingLowPriority": [
+        "PowerShell",
+        "Azure Logic Apps",
+        "Bitbucket",
+        "TFS",
+        "GitHub",
+        "SVN"
+      ]
+    },
+    "formattingCheck": {
+      "isBulletPointsUsed": true,
+      "isChronological": true,
+      "tone": "Professional",
+      "issues": []
+    },
+    "criticalFixes": [
+      "The candidate's profile as a Senior Frontend Engineer is a complete mismatch for a Workday Extend Developer role. The resume lacks any mention of Workday-specific skills or experience, which are critical for this position. The candidate should either tailor their resume specifically for Workday roles or apply for relevant Frontend Engineer positions."
+    ],
+    "recommendedImprovements": [
+      "Quantify more achievements with specific numbers and impact (e.g., 'Improved page performance by X%', 'Reduced development time by Y%').",
+      "Replace weak verbs like 'Worked on', 'Responsible for', 'Helped', and 'Involved in' with stronger action verbs to highlight direct contributions and leadership.",
+      "While not critical for this specific JD, for general frontend roles, consider adding a 'Projects' section to showcase significant personal or open-source contributions."
+    ]
+  }
+}

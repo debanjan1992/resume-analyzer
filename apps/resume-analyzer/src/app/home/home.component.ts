@@ -7,11 +7,11 @@ import {
 import { InputPanel } from '../components/input-panel/input-panel';
 import { ResumeAnalysisStore } from '../resume.store';
 import { AnalysisInProgress } from '../components/analysis-in-progress/analysis-in-progress';
-import { ActivatedRoute } from '@angular/router';
+import { Hero } from '../components/hero/hero';
 
 @Component({
   selector: 'app-home',
-  imports: [InputPanel, AnalysisInProgress],
+  imports: [InputPanel, AnalysisInProgress, Hero],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

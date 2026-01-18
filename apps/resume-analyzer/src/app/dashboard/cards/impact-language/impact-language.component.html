@@ -12,7 +12,7 @@
       <div class="flex p-1 bg-slate-100 rounded-lg mb-6">
         <button
           (click)="setView('strong')"
-          class="flex-1 py-2 text-sm font-semibold rounded-md transition-all duration-200 cursor-pointer"
+          class="flex-1 py-2 text-sm font-semibold rounded-lg transition-all duration-200 cursor-pointer"
           [class.bg-white]="activeView() === 'strong'"
           [class.shadow-sm]="activeView() === 'strong'"
           [class.text-slate-800]="activeView() === 'strong'"
@@ -24,7 +24,7 @@
 
         <button
           (click)="setView('weak')"
-          class="flex-1 py-2 text-sm font-semibold rounded-md transition-all duration-200 cursor-pointer"
+          class="flex-1 py-2 text-sm font-semibold rounded-lg transition-all duration-200 cursor-pointer"
           [class.bg-white]="activeView() === 'weak'"
           [class.shadow-sm]="activeView() === 'weak'"
           [class.text-slate-800]="activeView() === 'weak'"

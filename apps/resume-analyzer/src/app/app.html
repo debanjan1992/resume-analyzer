@@ -1,4 +1,6 @@
-<main class="w-full px-4 lg:w-5/7 mx-auto">
-    <app-hero></app-hero>
-    <router-outlet></router-outlet>
+@if (showHeader()) {
+<app-header />
+}
+<main class="w-full px-4 lg:w-5/7 mx-auto mt-12 overflow-auto">
+  <router-outlet></router-outlet>
 </main>

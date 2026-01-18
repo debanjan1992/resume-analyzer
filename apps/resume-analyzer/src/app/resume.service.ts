@@ -26,10 +26,14 @@ export class ResumeService {
     resumeText: string,
     jobDescription: string,
     apiKey?: string,
+    isDemo?: boolean,
   ): Observable<ResumeAnalysisResponse> {
     let url = environment.apiUrl + '/analyze';
     if (apiKey) {
       url = url + '?apiKey=' + apiKey;
+    }
+    if (isDemo) {
+      url = '/demo-data.json';
     }
     return this.http.post<ResumeAnalysisResponse>(url, {
       resumeText,
