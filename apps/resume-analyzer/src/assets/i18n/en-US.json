@@ -5,15 +5,52 @@
   "HEADER": {
     "TITLE": "Smart Resume Analyzer",
     "NAV": {
-      "ANALYSIS": "Analysis",
       "EDITOR": "Editor",
-      "HISTORY": "History"
+      "HISTORY": "History",
+      "ANALYSIS": "Analysis"
     },
     "USER": {
       "NAME": "John Doe",
       "PLAN": "Free Plan"
     },
     "INITIALS": "JD"
+  },
+  "LANDING": {
+    "BADGE": "Now with AI-Powered Insights",
+    "HERO": {
+      "TITLE_PART1": "Is your resume",
+      "TITLE_HIGHLIGHT": "ATS ready?",
+      "DESCRIPTION": "Don't let a bot reject your dream job. Our intelligent resume analyzer compares your resume against job descriptions to give you a competitive edge.",
+      "CTA": "Analyze My Resume"
+    },
+    "IMAGE": {
+      "ATS_SCORE": "ATS Score",
+      "AI_ANALYSIS": "AI Analysis",
+      "OPTIMIZED": "Optimized"
+    },
+    "FEATURES": {
+      "LABEL": "Features",
+      "TITLE": "Optimize every application",
+      "REAL_TIME": {
+        "TITLE": "Real-time Scoring",
+        "DESC": "Get an instant score from 0-100 based on modern ATS algorithms."
+      },
+      "KEYWORD_GAP": {
+        "TITLE": "Keyword Gap Analysis",
+        "DESC": "Identify exactly which hard skills and keywords are missing from your resume."
+      },
+      "POWER_VERBS": {
+        "TITLE": "Power Verbs",
+        "DESC": "Transform weak passive voice into strong, action-oriented impact language."
+      }
+    }
+  },
+  "SETTINGS": {
+    "TITLE": "Settings",
+    "API_KEY_LABEL": "Gemini API Key",
+    "API_KEY_PLACEHOLDER": "Enter your API Key",
+    "CANCEL": "Cancel",
+    "SAVE": "Save"
   },
   "HERO": {
     "TITLE_PREFIX": "Smart",
@@ -134,6 +171,23 @@
         "TITLE": "Critical Fixes",
         "NO_CRITICAL_FIXES": "No critical fixes."
       }
+    }
+  },
+  "HISTORY": {
+    "TITLE": "Scan History",
+    "NO_HISTORY": "No analysis history found.",
+    "NEW_ANALYSIS": "Start a new analysis",
+    "COLUMNS": {
+      "JOB_ROLE": "JOB ROLE",
+      "DATE": "DATE",
+      "ATS_SCORE": "ATS SCORE",
+      "STATUS": "STATUS",
+      "ACTION": "ACTION"
+    },
+    "STATUS": {
+      "CRITICAL": "Critical",
+      "NEEDS_WORK": "Needs Work",
+      "GOOD": "Good"
     }
   }
 }

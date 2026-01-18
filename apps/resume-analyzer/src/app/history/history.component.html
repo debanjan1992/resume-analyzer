@@ -1,0 +1,134 @@
+<div class="container mx-auto px-4 py-8">
+  <div class="flex items-center gap-4 mb-8">
+    <button
+      routerLink="/"
+      class="p-2 rounded-full hover:bg-gray-100 transition-colors cursor-pointer"
+      title="Back to Home"
+    >
+      <span class="material-symbols-outlined text-gray-600 p-1"
+        >arrow_back</span
+      >
+    </button>
+    <h1 class="text-3xl font-bold text-gray-800">
+      {{ 'HISTORY.TITLE' | translate }}
+    </h1>
+  </div>
+
+  @if (history.length === 0) {
+    <div class="text-center py-12 bg-gray-50 rounded-lg border border-gray-200">
+      <span class="material-symbols-outlined text-4xl text-gray-400 mb-2"
+        >history_toggle_off</span
+      >
+      <p class="text-gray-600">{{ 'HISTORY.NO_HISTORY' | translate }}</p>
+      <a
+        routerLink="/"
+        class="text-indigo-600 hover:text-indigo-800 font-medium mt-2 inline-block"
+        >{{ 'HISTORY.NEW_ANALYSIS' | translate }}</a
+      >
+    </div>
+  } @else {
+    <div
+      class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden"
+    >
+      <div
+        class="grid grid-cols-12 gap-4 p-4 border-b border-gray-100 bg-gray-50 text-xs font-semibold text-gray-500 uppercase tracking-wider"
+      >
+        <div class="col-span-4">
+          {{ 'HISTORY.COLUMNS.JOB_ROLE' | translate }}
+        </div>
+        <div class="col-span-2 text-center">
+          {{ 'HISTORY.COLUMNS.DATE' | translate }}
+        </div>
+        <div class="col-span-3 text-center">
+          {{ 'HISTORY.COLUMNS.ATS_SCORE' | translate }}
+        </div>
+        <div class="col-span-2 text-center">
+          {{ 'HISTORY.COLUMNS.STATUS' | translate }}
+        </div>
+        <div class="col-span-1 text-right">
+          {{ 'HISTORY.COLUMNS.ACTION' | translate }}
+        </div>
+      </div>
+
+      <div class="divide-y divide-gray-100">
+        @for (entry of history; track entry.id) {
+          <div
+            class="grid grid-cols-12 gap-4 p-4 items-center hover:bg-gray-50 transition-colors"
+          >
+            <!-- Job Role -->
+            <div
+              class="col-span-4 font-medium text-gray-800 truncate"
+              title="{{ entry.analysisResult.targetRole || 'Resume Analysis' }}"
+            >
+              {{ entry.analysisResult.targetRole || 'Resume Analysis' }}
+            </div>
+
+            <!-- Date -->
+            <div class="col-span-2 text-center text-sm text-gray-600">
+              {{ entry.timestamp | date: 'mediumDate' }}
+            </div>
+
+            <!-- ATS Score -->
+            <div class="col-span-3 flex items-center justify-center gap-3">
+              <div class="w-24 h-2 bg-gray-100 rounded-full overflow-hidden">
+                <div
+                  class="h-full rounded-full transition-all duration-500"
+                  [class.bg-green-500]="entry.analysisResult.overallScore >= 80"
+                  [class.bg-orange-500]="
+                    entry.analysisResult.overallScore >= 50 &&
+                    entry.analysisResult.overallScore < 80
+                  "
+                  [class.bg-red-500]="entry.analysisResult.overallScore < 50"
+                  [style.width.%]="entry.analysisResult.overallScore"
+                ></div>
+              </div>
+              <span
+                class="font-bold text-sm"
+                [class.text-green-600]="entry.analysisResult.overallScore >= 80"
+                [class.text-orange-600]="
+                  entry.analysisResult.overallScore >= 50 &&
+                  entry.analysisResult.overallScore < 80
+                "
+                [class.text-red-600]="entry.analysisResult.overallScore < 50"
+              >
+                {{ entry.analysisResult.overallScore }}
+              </span>
+            </div>
+
+            <!-- Status -->
+            <div class="col-span-2 flex justify-center">
+              @let status = getStatus(entry.analysisResult.overallScore);
+              <span
+                class="px-3 py-1 rounded-full text-xs font-bold {{
+                  status.class
+                }}"
+              >
+                {{ status.label | translate }}
+              </span>
+            </div>
+
+            <!-- Actions -->
+            <div class="col-span-1 flex justify-end gap-2">
+              <button
+                (click)="loadEntry(entry)"
+                class="p-1.5 text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors cursor-pointer"
+                title="View Report"
+              >
+                <span class="material-symbols-outlined text-xl"
+                  >arrow_forward</span
+                >
+              </button>
+              <button
+                (click)="deleteEntry($event, entry.id)"
+                class="p-1.5 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors cursor-pointer"
+                title="Delete Analysis"
+              >
+                <span class="material-symbols-outlined text-xl">delete</span>
+              </button>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  }
+</div>

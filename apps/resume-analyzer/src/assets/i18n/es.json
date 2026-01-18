@@ -1,0 +1,193 @@
+{
+  "APP": {
+    "TITLE": "Analizador de Currículum"
+  },
+  "HEADER": {
+    "TITLE": "Analizador de Currículum Inteligente",
+    "NAV": {
+      "EDITOR": "Editor",
+      "HISTORY": "Historial",
+      "ANALYSIS": "Análisis"
+    },
+    "USER": {
+      "NAME": "Juan Pérez",
+      "PLAN": "Plan Gratuito"
+    },
+    "INITIALS": "JP"
+  },
+  "LANDING": {
+    "BADGE": "Ahora con Insights Impulsados por IA",
+    "HERO": {
+      "TITLE_PART1": "¿Está su currículum",
+      "TITLE_HIGHLIGHT": "listo para ATS?",
+      "DESCRIPTION": "No deje que un bot rechace su trabajo soñado. Nuestro analizador de currículum inteligente compara su currículum con las descripciones de trabajo para darle una ventaja competitiva.",
+      "CTA": "Analizar Mi Currículum"
+    },
+    "IMAGE": {
+      "ATS_SCORE": "Puntuación ATS",
+      "AI_ANALYSIS": "Análisis IA",
+      "OPTIMIZED": "Optimizado"
+    },
+    "FEATURES": {
+      "LABEL": "Características",
+      "TITLE": "Optimice cada aplicación",
+      "REAL_TIME": {
+        "TITLE": "Puntuación en tiempo real",
+        "DESC": "Obtenga una puntuación instantánea de 0-100 basada en algoritmos ATS modernos."
+      },
+      "KEYWORD_GAP": {
+        "TITLE": "Análisis de Brechas de Palabras Clave",
+        "DESC": "Identifique exactamente qué habilidades duras y palabras clave faltan en su currículum."
+      },
+      "POWER_VERBS": {
+        "TITLE": "Verbos de Poder",
+        "DESC": "Transforme la voz pasiva débil en lenguaje de impacto fuerte y orientado a la acción."
+      }
+    }
+  },
+  "SETTINGS": {
+    "TITLE": "Configuración",
+    "API_KEY_LABEL": "Clave API de Gemini",
+    "API_KEY_PLACEHOLDER": "Ingrese su clave API",
+    "CANCEL": "Cancelar",
+    "SAVE": "Guardar"
+  },
+  "HERO": {
+    "TITLE_PREFIX": "Analizador de Currículum",
+    "TITLE_SUFFIX": "Inteligente",
+    "SUBTITLE": "Pegue su currículum y obtenga una puntuación instantánea estilo ATS, comentarios prácticos y análisis de palabras clave.",
+    "TAGS": {
+      "ATS": "Verificación de palabras clave ATS",
+      "ACTION": "Análisis de verbos de acción",
+      "SCORING": "Puntuación instantánea"
+    }
+  },
+  "INPUT": {
+    "RESUME": {
+      "TITLE": "Su Currículum",
+      "REQUIRED": "(Requerido)",
+      "UPLOAD_TEXT": "Haga clic para subir PDF",
+      "UPLOAD_HINT": "PDFs hasta 5MB (Solo texto)",
+      "CHANGE_FILE": "Cambiar archivo",
+      "OR_PASTE": "o pegue el texto directamente",
+      "PLACEHOLDER": "El contenido del currículum aparecerá aquí después de subirlo, o puede pegarlo directamente."
+    },
+    "JOB_DESCRIPTION": {
+      "TITLE": "Descripción del trabajo objetivo",
+      "REQUIRED": "(Requerido)",
+      "PLACEHOLDER": "Pegue aquí la descripción del trabajo objetivo al que está aplicando...\n\nRequisitos:\n- 5+ años de experiencia en React\n- Excelentes habilidades de resolución de problemas\n- Fuertes habilidades de comunicación y trabajo en equipo"
+    },
+    "API_KEY": {
+      "PLACEHOLDER": "Ingrese su clave API de Gemini aquí..."
+    },
+    "BUTTON": {
+      "ANALYZE": "Analizar Currículum"
+    }
+  },
+  "ANALYSIS": {
+    "TITLE": "Análisis en progreso",
+    "DISCLAIMER": "Este análisis está impulsado por inteligencia artificial. Aunque nos esforzamos por la precisión, los resultados pueden variar y deben usarse como una guía en lugar de una evaluación definitiva. Por favor revise todas las sugerencias antes de hacer cambios en su currículum",
+    "WAIT_MESSAGE": "Análisis en progreso. Por favor espere hasta 2 minutos para que la IA genere su informe completo. No actualice la página.",
+    "MESSAGES": {
+      "PARSING": "Analizando contenido del PDF...",
+      "EXTRACTING": "Extrayendo palabras clave...",
+      "ANALYZING": "Analizando contra la descripción del trabajo...",
+      "GENERATING": "Generando sugerencias...",
+      "CATEGORIZING": "Categorizando habilidades...",
+      "EXPERIENCE": "Analizando su experiencia, habilidades y formato...",
+      "OPTIMIZING": "Optimizando para ATS...",
+      "REVIEWING": "Revisando impactos cuantificables...",
+      "COMPILING": "Compilando resultados..."
+    }
+  },
+  "DASHBOARD": {
+    "TITLE": "Informe de Análisis",
+    "GENERATED_ON": "Generado el",
+    "TARGET_ROLE": "Rol Objetivo",
+    "RE_UPLOAD": "Volver a subir",
+    "DOWNLOAD": "Descargar Informe",
+    "CRITICAL_ALERT": "Su currículum tiene problemas críticos que necesitan atención inmediata. Por favor revise la sección 'Correcciones Críticas' abajo.",
+    "CARDS": {
+      "ATS_SCORE": {
+        "TITLE": "PUNTUACIÓN ATS GENERAL",
+        "DESCRIPTION": "La puntuación ATS indica qué tan bien está optimizado su currículum para los Sistemas de Seguimiento de Candidatos."
+      },
+      "SCORE_BREAKDOWN": {
+        "TITLE": "Desglose de Puntuación",
+        "LABELS": {
+          "HARD_SKILLS": "Habilidades Duras",
+          "EXPERIENCE": "Experiencia",
+          "METRICS": "Métricas",
+          "FORMATTING": "Formato",
+          "EDUCATION": "Educación",
+          "RELEVANCE": "Relevancia"
+        }
+      },
+      "JD_MATCH": {
+        "TITLE": "Coincidencia con Descripción del Trabajo",
+        "COMPARISON": "Comparación contra objetivo",
+        "MATCH_RATE": "Tasa de coincidencia",
+        "MATCHED_KEYWORDS": "PALABRAS CLAVE COINCIDENTES",
+        "HIGH_PRIORITY_MISSING": "FALTANTES DE ALTA PRIORIDAD",
+        "NICE_TO_HAVE": "DESEABLE TENER"
+      },
+      "QUICK_WINS": {
+        "TITLE": "Victorias Rápidas",
+        "METRICS": {
+          "POWER_VERBS": "Verbos de Poder",
+          "ACTION_LANGUAGE": "Lenguaje orientado a la acción",
+          "METRICS": "Métricas",
+          "QUANTIFIABLE_ACHIEVEMENTS": "Logros Cuantificables",
+          "FORMATTING_TONE": "Formato - Tono",
+          "ATS_PARSABILITY": "Legibilidad ATS"
+        }
+      },
+      "IMPACT_LANGUAGE": {
+        "TITLE": "Lenguaje de Impacto",
+        "STRONG_VERBS": "Verbos Fuertes",
+        "WEAK_VERBS": "Verbos Débiles",
+        "POWER_VERBS_FOUND": "Verbos de Poder Encontrados",
+        "WEAK_VERBS_FOUND": "Verbos Débiles"
+      },
+      "SOFT_SKILLS": {
+        "TITLE": "Habilidades Blandas",
+        "DETECTED": "Detectado",
+        "MISSING": "Faltante"
+      },
+      "STRUCTURE_CHECK": {
+        "TITLE": "Verificación de Estructura",
+        "DETECTED": "Detectado",
+        "MISSING": "Faltante"
+      },
+      "QUANTIFIABLE_IMPACT": {
+        "TITLE": "Impacto Cuantificable",
+        "METRICS_FOUND": "MÉTRICAS ENCONTRADAS"
+      },
+      "RECOMMENDATIONS": {
+        "TITLE": "Recomendaciones",
+        "NO_RECOMMENDATIONS": "No hay recomendaciones disponibles."
+      },
+      "CRITICAL_FIXES": {
+        "TITLE": "Correcciones Críticas",
+        "NO_CRITICAL_FIXES": "Sin correcciones críticas."
+      }
+    }
+  },
+  "HISTORY": {
+    "TITLE": "Historial de Escaneos",
+    "NO_HISTORY": "No se encontró historial de análisis.",
+    "NEW_ANALYSIS": "Iniciar un nuevo análisis",
+    "COLUMNS": {
+      "JOB_ROLE": "ROL DE TRABAJO",
+      "DATE": "FECHA",
+      "ATS_SCORE": "PUNTUACIÓN ATS",
+      "STATUS": "ESTADO",
+      "ACTION": "ACCIÓN"
+    },
+    "STATUS": {
+      "CRITICAL": "Crítico",
+      "NEEDS_WORK": "Necesita Trabajo",
+      "GOOD": "Bueno"
+    }
+  }
+}

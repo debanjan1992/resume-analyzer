@@ -20,6 +20,15 @@ interface ResumeAnalysisState {
   isTextExtracting: boolean;
   jobDescription: string;
   resumeText: string;
+  currentId: string | null;
+}
+
+export interface HistoryEntry {
+  id: string;
+  timestamp: number;
+  resumeText: string;
+  jobDescription: string;
+  analysisResult: ResumeAnalysis;
 }
 
 const initialState: ResumeAnalysisState = {
@@ -28,7 +37,8 @@ const initialState: ResumeAnalysisState = {
   isTextExtracting: false,
   jobDescription: '',
   resumeText: '',
-  apiKey: '',
+  apiKey: localStorage.getItem('gemini-api-key') || '',
+  currentId: null,
 };
 
 export const ResumeAnalysisStore = signalStore(
@@ -43,7 +53,32 @@ export const ResumeAnalysisStore = signalStore(
       };
 
       const setAPIKey = (apiKey: string) => {
+        localStorage.setItem('gemini-api-key', apiKey);
         patchState(store, { apiKey });
+      };
+
+      const saveToHistory = (
+        resumeText: string,
+        jobDescription: string,
+        analysisResult: ResumeAnalysis,
+      ): string => {
+        const id = crypto.randomUUID();
+        const historyItem: HistoryEntry = {
+          id,
+          timestamp: Date.now(),
+          resumeText,
+          jobDescription,
+          analysisResult,
+        };
+        const history = JSON.parse(
+          localStorage.getItem('resume-analysis-history') || '[]',
+        );
+        history.unshift(historyItem);
+        localStorage.setItem(
+          'resume-analysis-history',
+          JSON.stringify(history),
+        );
+        return id;
       };
 
       const extractTextFromFile = rxMethod<File>(
@@ -87,7 +122,13 @@ export const ResumeAnalysisStore = signalStore(
                   next: (response) => {
                     if (response.success) {
                       patchState(store, { analysisResult: response.data });
-                      router.navigate(['/analysis']);
+                      const id = saveToHistory(
+                        store.resumeText(),
+                        store.jobDescription(),
+                        response.data,
+                      );
+                      patchState(store, { currentId: id });
+                      router.navigate(['/analysis', id]);
                     }
                   },
                   error: (error) => {
@@ -103,12 +144,35 @@ export const ResumeAnalysisStore = signalStore(
         ),
       );
 
+      const loadAnalysisById = (id: string) => {
+        const history: HistoryEntry[] = JSON.parse(
+          localStorage.getItem('resume-analysis-history') || '[]',
+        );
+        const entry = history.find((item) => item.id === id);
+
+        if (entry) {
+          patchState(store, {
+            resumeText: entry.resumeText,
+            jobDescription: entry.jobDescription,
+            analysisResult: entry.analysisResult,
+            currentId: entry.id,
+          });
+        }
+      };
+
+      const loadHistoryEntry = (entry: HistoryEntry) => {
+        // Redundant now, but keeping for backward compatibility if needed temporarily
+        router.navigate(['/analysis', entry.id]);
+      };
+
       return {
         setJobDescription,
         setResumeText,
         setAPIKey,
         extractTextFromFile,
         analyzeResume,
+        loadHistoryEntry,
+        loadAnalysisById,
       };
     },
   ),

@@ -33,7 +33,6 @@ export class InputPanel implements OnInit {
   form = this.fb.group({
     resumeText: ['', Validators.required],
     targetJobDescription: ['', Validators.required],
-    apiKey: [''],
   });
   selectedFile = signal<File | null>(null);
 
@@ -60,7 +59,6 @@ export class InputPanel implements OnInit {
       .subscribe((value) => {
         this.store.setJobDescription(value.targetJobDescription || '');
         this.store.setResumeText(value.resumeText || '');
-        this.store.setAPIKey(value.apiKey || '');
       });
   }
 
