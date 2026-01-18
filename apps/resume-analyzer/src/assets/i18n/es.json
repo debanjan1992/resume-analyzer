@@ -49,6 +49,7 @@
     "TITLE": "Configuración",
     "API_KEY_LABEL": "Clave API de Gemini",
     "API_KEY_PLACEHOLDER": "Ingrese su clave API",
+    "API_KEY_REQUIRED": "La clave API es obligatoria",
     "CANCEL": "Cancelar",
     "SAVE": "Guardar"
   },

@@ -49,6 +49,7 @@
     "TITLE": "Settings",
     "API_KEY_LABEL": "Gemini API Key",
     "API_KEY_PLACEHOLDER": "Enter your API Key",
+    "API_KEY_REQUIRED": "API Key is required",
     "CANCEL": "Cancel",
     "SAVE": "Save"
   },
