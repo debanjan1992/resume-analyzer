@@ -22,33 +22,39 @@
     </div>
     <div class="flex flex-col justify-center">
       <h1 class="text-slate-900 font-bold text-lg leading-tight">
-        Smart Resume Analyzer
+        {{ 'HEADER.TITLE' | translate }}
       </h1>
     </div>
   </div>
 
-  <nav class="bg-slate-100 p-1 rounded-full flex items-center gap-1 hidden md:block">
+  <nav
+    class="bg-slate-100 p-1 rounded-full flex items-center gap-1 hidden md:block"
+  >
     <button
       class="bg-white text-slate-800 px-5 py-1.5 rounded-full text-sm font-semibold shadow-sm transition-all"
     >
-      Analysis
+      {{ 'HEADER.NAV.ANALYSIS' | translate }}
     </button>
     <button
       class="text-slate-500 hover:text-slate-700 px-5 py-1.5 rounded-full text-sm font-medium transition-colors"
     >
-      Editor
+      {{ 'HEADER.NAV.EDITOR' | translate }}
     </button>
     <button
       class="text-slate-500 hover:text-slate-700 px-5 py-1.5 rounded-full text-sm font-medium transition-colors"
     >
-      History
+      {{ 'HEADER.NAV.HISTORY' | translate }}
     </button>
   </nav>
 
   <div class="flex items-center gap-4">
     <div class="text-right hidden sm:block">
-      <p class="text-slate-900 font-semibold text-sm leading-tight">John Doe</p>
-      <p class="text-slate-400 text-xs font-medium">Free Plan</p>
+      <p class="text-slate-900 font-semibold text-sm leading-tight">
+        {{ 'HEADER.USER.NAME' | translate }}
+      </p>
+      <p class="text-slate-400 text-xs font-medium">
+        {{ 'HEADER.USER.PLAN' | translate }}
+      </p>
     </div>
 
     <button
@@ -76,7 +82,7 @@
     <div
       class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-sm"
     >
-      JD
+      {{ 'HEADER.INITIALS' | translate }}
     </div>
   </div>
 </header>

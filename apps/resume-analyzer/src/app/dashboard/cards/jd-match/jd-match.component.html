@@ -3,22 +3,29 @@
 >
   <header class="flex flex-col md:flex-row md:text-left items-center mb-1">
     <div class="title flex flex-col flex-1">
-      <div class="main-title flex items-center justify-center md:justify-start gap-1">
+      <div
+        class="main-title flex items-center justify-center md:justify-start gap-1"
+      >
         <span class="material-symbols-outlined text-4xl text-indigo-600">
           description
         </span>
-        <span class="text-xl font-bold">Job Description Match</span>
+        <span class="text-xl font-bold">{{
+          'DASHBOARD.CARDS.JD_MATCH.TITLE' | translate
+        }}</span>
       </div>
       <p class="text-sm text-stone-500 font-medium text-center md:text-left">
-        Comparison against target "{{ store.analysisResult()?.targetRole }}"
-        role
+        {{ 'DASHBOARD.CARDS.JD_MATCH.COMPARISON' | translate }} "{{
+          store.analysisResult()?.targetRole
+        }}" role
       </p>
     </div>
     <div class="score flex flex-col items-end">
       <span class="text-3xl font-bold text-indigo-600"
         >{{ store.analysisResult()?.keywordMatch?.score }}%</span
       >
-      <span class="text-sm text-stone-500">Match Rate</span>
+      <span class="text-sm text-stone-500">{{
+        'DASHBOARD.CARDS.JD_MATCH.MATCH_RATE' | translate
+      }}</span>
     </div>
   </header>
   <div class="w-full bg-slate-100 rounded-full h-1 overflow-hidden mb-6">
@@ -33,7 +40,7 @@
       <header
         class="text-xs font-semibold text-green-700 bg-green-100 mb-2 inline-block px-2 rounded-sm py-1"
       >
-        MATCHED KEYWORDS
+        {{ 'DASHBOARD.CARDS.JD_MATCH.MATCHED_KEYWORDS' | translate }}
       </header>
 
       <div class="keywords-wrapper">

@@ -5,12 +5,14 @@
     <span class="material-symbols-outlined text-4xl text-red-600">
       cloud_alert
     </span>
-    <span class="font-bold">Critical Fixes</span>
+    <span class="font-bold">{{
+      'DASHBOARD.CARDS.CRITICAL_FIXES.TITLE' | translate
+    }}</span>
   </header>
   <div class="content flex flex-col flex-wrap gap-4">
     @if (store.analysisResult()?.criticalFixes?.length === 0) {
       <div class="text-sm text-center font-medium text-stone-500 mt-8">
-        No critical fixes.
+        {{ 'DASHBOARD.CARDS.CRITICAL_FIXES.NO_CRITICAL_FIXES' | translate }}
       </div>
     } @else {
       @for (fix of store.analysisResult()?.criticalFixes ?? []; track fix) {

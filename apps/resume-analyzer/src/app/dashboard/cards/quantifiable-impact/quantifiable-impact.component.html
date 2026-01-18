@@ -5,19 +5,25 @@
     <span class="material-symbols-outlined text-4xl text-amber-600">
       bar_chart
     </span>
-    <span class="font-bold">Quantifiable Impact</span>
+    <span class="font-bold">{{
+      'DASHBOARD.CARDS.QUANTIFIABLE_IMPACT.TITLE' | translate
+    }}</span>
   </header>
   <div class="content">
     <section class="text-sm text-stone-600 mb-4">
       <em>"{{ store.analysisResult()?.quantifiableMetrics?.suggestion }}"</em>
     </section>
     <section class="mb-4">
-      <div class="text-xs font-semibold text-stone-400 mb-4">METRICS FOUND</div>
+      <div class="text-xs font-semibold text-stone-400 mb-4">
+        {{ 'DASHBOARD.CARDS.QUANTIFIABLE_IMPACT.METRICS_FOUND' | translate }}
+      </div>
       @for (
         metric of store.analysisResult()?.quantifiableMetrics?.list;
         track metric
       ) {
-        <div class="flex items-center mb-4 text-sm gap-1 border-s-2 border-indigo-300 pl-2">
+        <div
+          class="flex items-center mb-4 text-sm gap-1 border-s-2 border-indigo-300 pl-2"
+        >
           <span>{{ metric }}</span>
         </div>
       }

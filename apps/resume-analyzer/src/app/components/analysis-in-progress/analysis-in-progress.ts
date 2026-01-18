@@ -1,27 +1,35 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  OnInit,
+  OnDestroy,
+} from '@angular/core';
+
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-analysis-in-progress',
-  imports: [],
+  imports: [TranslateModule],
   templateUrl: './analysis-in-progress.html',
   styleUrl: './analysis-in-progress.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AnalysisInProgress {
+export class AnalysisInProgress implements OnInit, OnDestroy {
   messages = [
-    'Parsing PDF content...',
-    'Extracting keywords...',
-    'Analyzing against Job Description...',
-    'Generating suggestions...',
-    'Categorizing skills...',
-    'Parsing your experience, skills, and formatting...',
-    'Optimizing for ATS...',
-    'Reviewing quantifiable impacts...',
-    'Compiling results...'
+    'ANALYSIS.MESSAGES.PARSING',
+    'ANALYSIS.MESSAGES.EXTRACTING',
+    'ANALYSIS.MESSAGES.ANALYZING',
+    'ANALYSIS.MESSAGES.GENERATING',
+    'ANALYSIS.MESSAGES.CATEGORIZING',
+    'ANALYSIS.MESSAGES.EXPERIENCE',
+    'ANALYSIS.MESSAGES.OPTIMIZING',
+    'ANALYSIS.MESSAGES.REVIEWING',
+    'ANALYSIS.MESSAGES.COMPILING',
   ];
   currentMessage = signal(this.messages[0]);
 
-  private intervalId: any;
+  private intervalId: ReturnType<typeof setInterval> | undefined;
 
   ngOnInit() {
     this.startMessageCycle();

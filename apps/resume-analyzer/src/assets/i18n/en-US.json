@@ -1,0 +1,139 @@
+{
+  "APP": {
+    "TITLE": "Resume Analyzer"
+  },
+  "HEADER": {
+    "TITLE": "Smart Resume Analyzer",
+    "NAV": {
+      "ANALYSIS": "Analysis",
+      "EDITOR": "Editor",
+      "HISTORY": "History"
+    },
+    "USER": {
+      "NAME": "John Doe",
+      "PLAN": "Free Plan"
+    },
+    "INITIALS": "JD"
+  },
+  "HERO": {
+    "TITLE_PREFIX": "Smart",
+    "TITLE_SUFFIX": "Resume Analyzer",
+    "SUBTITLE": "Paste your resume and get an instant ATS-style score, actionable feedback, and keyword analysis.",
+    "TAGS": {
+      "ATS": "ATS Keyword Check",
+      "ACTION": "Action Verb Analysis",
+      "SCORING": "Instant Scoring"
+    }
+  },
+  "INPUT": {
+    "RESUME": {
+      "TITLE": "Your Resume",
+      "REQUIRED": "(Required)",
+      "UPLOAD_TEXT": "Click to upload PDF",
+      "UPLOAD_HINT": "PDFs up to 5MB (Text-based only)",
+      "CHANGE_FILE": "Change File",
+      "OR_PASTE": "or paste text directly",
+      "PLACEHOLDER": "Resume content will appear here after upload, or you can paste it directly."
+    },
+    "JOB_DESCRIPTION": {
+      "TITLE": "Target Job Description",
+      "REQUIRED": "(Required)",
+      "PLACEHOLDER": "Paste the target job description you are applying for here...\n\nRequirements:\n- 5+ years experience in React\n- Excellent problem-solving skills\n- Strong communication and teamwork abilities"
+    },
+    "API_KEY": {
+      "PLACEHOLDER": "Enter Gemini API Key here..."
+    },
+    "BUTTON": {
+      "ANALYZE": "Analyze Resume"
+    }
+  },
+  "ANALYSIS": {
+    "TITLE": "Analysis in Progress",
+    "DISCLAIMER": "This analysis is powered by artificial intelligence. While we strive for accuracy, results may vary and should be used as a guide rather than a definitive evaluation. Please review all suggestions before making changes to your resume",
+    "WAIT_MESSAGE": "Analysis in progress. Please allow up to 2 minutes for the AI to generate your full report. Do not refresh the page.",
+    "MESSAGES": {
+      "PARSING": "Parsing PDF content...",
+      "EXTRACTING": "Extracting keywords...",
+      "ANALYZING": "Analyzing against Job Description...",
+      "GENERATING": "Generating suggestions...",
+      "CATEGORIZING": "Categorizing skills...",
+      "EXPERIENCE": "Parsing your experience, skills, and formatting...",
+      "OPTIMIZING": "Optimizing for ATS...",
+      "REVIEWING": "Reviewing quantifiable impacts...",
+      "COMPILING": "Compiling results..."
+    }
+  },
+  "DASHBOARD": {
+    "TITLE": "Analysis Report",
+    "GENERATED_ON": "Generated on",
+    "TARGET_ROLE": "Target Role",
+    "RE_UPLOAD": "Re-upload",
+    "DOWNLOAD": "Download Report",
+    "CRITICAL_ALERT": "Your resume has critical issues that need immediate attention. Please review the 'Critical Fixes' section below.",
+    "CARDS": {
+      "ATS_SCORE": {
+        "TITLE": "OVERALL ATS SCORE",
+        "DESCRIPTION": "ATS Score indicates how well your resume is optimized for Applicant Tracking Systems."
+      },
+      "SCORE_BREAKDOWN": {
+        "TITLE": "Score Breakdown",
+        "LABELS": {
+          "HARD_SKILLS": "Hard Skills",
+          "EXPERIENCE": "Experience",
+          "METRICS": "Metrics",
+          "FORMATTING": "Formatting",
+          "EDUCATION": "Education",
+          "RELEVANCE": "Relevance"
+        }
+      },
+      "JD_MATCH": {
+        "TITLE": "Job Description Match",
+        "COMPARISON": "Comparison against target",
+        "MATCH_RATE": "Match Rate",
+        "MATCHED_KEYWORDS": "MATCHED KEYWORDS",
+        "HIGH_PRIORITY_MISSING": "HIGH PRIORITY MISSING",
+        "NICE_TO_HAVE": "NICE TO HAVE"
+      },
+      "QUICK_WINS": {
+        "TITLE": "Quick Wins",
+        "METRICS": {
+          "POWER_VERBS": "Power Verbs",
+          "ACTION_LANGUAGE": "Action-oriented language",
+          "METRICS": "Metrics",
+          "QUANTIFIABLE_ACHIEVEMENTS": "Quantifiable Achievements",
+          "FORMATTING_TONE": "Formatting - Tone",
+          "ATS_PARSABILITY": "ATS Parsability"
+        }
+      },
+      "IMPACT_LANGUAGE": {
+        "TITLE": "Impact Language",
+        "STRONG_VERBS": "Strong Verbs",
+        "WEAK_VERBS": "Weak Verbs",
+        "POWER_VERBS_FOUND": "Power Verbs Found",
+        "WEAK_VERBS_FOUND": "Weak Verbs"
+      },
+      "SOFT_SKILLS": {
+        "TITLE": "Soft Skills",
+        "DETECTED": "Detected",
+        "MISSING": "Missing"
+      },
+      "STRUCTURE_CHECK": {
+        "TITLE": "Structure Check",
+        "DETECTED": "Detected",
+        "MISSING": "Missing"
+      },
+      "QUANTIFIABLE_IMPACT": {
+        "TITLE": "Quantifiable Impact",
+        "METRICS_FOUND": "METRICS FOUND"
+      },
+      "RECOMMENDATIONS": {
+        "TITLE": "Recommendations",
+        "NO_RECOMMENDATIONS": "No recommendations available."
+      },
+      "CRITICAL_FIXES": {
+        "TITLE": "Critical Fixes",
+        "NO_CRITICAL_FIXES": "No critical fixes."
+      }
+    }
+  }
+}

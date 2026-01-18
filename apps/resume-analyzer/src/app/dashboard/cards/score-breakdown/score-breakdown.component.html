@@ -2,37 +2,39 @@
   class="w-full h-full bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden p-6"
 >
   <header class="flex items-center mb-6">
-    <h3 class="font-bold flex-1">Score Breakdown</h3>
+    <h3 class="font-bold flex-1">
+      {{ 'DASHBOARD.CARDS.SCORE_BREAKDOWN.TITLE' | translate }}
+    </h3>
   </header>
   <div class="content flex flex-col gap-4">
     <app-score-bar
       [score]="store.analysisResult()?.scoreBreakdown?.hardSkills || 0"
-      [label]="'Hard Skills'"
+      [label]="'DASHBOARD.CARDS.SCORE_BREAKDOWN.LABELS.HARD_SKILLS' | translate"
       [color]="'indigo'"
     ></app-score-bar>
     <app-score-bar
       [score]="store.analysisResult()?.scoreBreakdown?.experience || 0"
-      [label]="'Experience'"
+      [label]="'DASHBOARD.CARDS.SCORE_BREAKDOWN.LABELS.EXPERIENCE' | translate"
       [color]="'indigo'"
     ></app-score-bar>
     <app-score-bar
       [score]="store.analysisResult()?.scoreBreakdown?.metrics || 0"
-      [label]="'Metrics'"
+      [label]="'DASHBOARD.CARDS.SCORE_BREAKDOWN.LABELS.METRICS' | translate"
       [color]="'amber'"
     ></app-score-bar>
     <app-score-bar
       [score]="store.analysisResult()?.scoreBreakdown?.formatting || 0"
-      [label]="'Formatting'"
+      [label]="'DASHBOARD.CARDS.SCORE_BREAKDOWN.LABELS.FORMATTING' | translate"
       [color]="'green'"
     ></app-score-bar>
     <app-score-bar
       [score]="store.analysisResult()?.scoreBreakdown?.education || 0"
-      [label]="'Education'"
+      [label]="'DASHBOARD.CARDS.SCORE_BREAKDOWN.LABELS.EDUCATION' | translate"
       [color]="'green'"
     ></app-score-bar>
     <app-score-bar
       [score]="store.analysisResult()?.scoreBreakdown?.relevance || 0"
-      [label]="'Relevance'"
+      [label]="'DASHBOARD.CARDS.SCORE_BREAKDOWN.LABELS.RELEVANCE' | translate"
       [color]="'indigo'"
     ></app-score-bar>
   </div>

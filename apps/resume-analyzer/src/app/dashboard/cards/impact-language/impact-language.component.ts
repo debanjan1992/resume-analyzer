@@ -5,10 +5,11 @@ import {
   signal,
 } from '@angular/core';
 import { ResumeAnalysisStore } from '../../../resume.store';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-impact-language',
-  imports: [],
+  imports: [TranslateModule],
   templateUrl: './impact-language.component.html',
   styleUrl: './impact-language.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

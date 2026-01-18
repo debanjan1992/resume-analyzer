@@ -5,7 +5,9 @@
     <span class="material-symbols-outlined text-4xl text-amber-600">
       explosion
     </span>
-    <span class="font-bold">Impact Language</span>
+    <span class="font-bold">{{
+      'DASHBOARD.CARDS.IMPACT_LANGUAGE.TITLE' | translate
+    }}</span>
   </header>
   <div class="content">
     <div class="w-full">
@@ -19,7 +21,7 @@
           [class.text-slate-500]="activeView() !== 'strong'"
           [class.hover:text-slate-700]="activeView() !== 'strong'"
         >
-          Strong Verbs
+          {{ 'DASHBOARD.CARDS.IMPACT_LANGUAGE.STRONG_VERBS' | translate }}
         </button>
 
         <button
@@ -31,7 +33,7 @@
           [class.text-slate-500]="activeView() !== 'weak'"
           [class.hover:text-slate-700]="activeView() !== 'weak'"
         >
-          Weak Verbs
+          {{ 'DASHBOARD.CARDS.IMPACT_LANGUAGE.WEAK_VERBS' | translate }}
         </button>
       </div>
 
@@ -52,9 +54,10 @@
                   d="M13 10V3L4 14h7v7l9-11h-7z"
                 ></path>
               </svg>
-              Power Verbs Found ({{
-                store.analysisResult()?.powerVerbs?.list?.length ?? 0
-              }})
+              {{
+                'DASHBOARD.CARDS.IMPACT_LANGUAGE.POWER_VERBS_FOUND' | translate
+              }}
+              ({{ store.analysisResult()?.powerVerbs?.list?.length ?? 0 }})
             </h4>
             <div class="flex flex-wrap gap-2">
               @for (
@@ -86,9 +89,10 @@
                   d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
                 ></path>
               </svg>
-              Weak Verbs ({{
-                store.analysisResult()?.powerVerbs?.weakVerbs?.length ?? 0
-              }})
+              {{
+                'DASHBOARD.CARDS.IMPACT_LANGUAGE.WEAK_VERBS_FOUND' | translate
+              }}
+              ({{ store.analysisResult()?.powerVerbs?.weakVerbs?.length ?? 0 }})
             </h4>
             <div class="flex flex-wrap gap-2">
               @for (

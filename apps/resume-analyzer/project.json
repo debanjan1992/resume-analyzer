@@ -18,6 +18,11 @@
           {
             "glob": "**/*",
             "input": "apps/resume-analyzer/public"
+          },
+          {
+            "glob": "**/*",
+            "input": "apps/resume-analyzer/src/assets",
+            "output": "assets"
           }
         ],
         "styles": ["apps/resume-analyzer/src/styles.scss"]

@@ -5,11 +5,15 @@
     <span class="material-symbols-outlined text-4xl text-rose-600">
       flare
     </span>
-    <span class="font-bold">Recommendations</span>
+    <span class="font-bold">{{
+      'DASHBOARD.CARDS.RECOMMENDATIONS.TITLE' | translate
+    }}</span>
   </header>
   <div class="content flex flex-col flex-wrap gap-4 h-full">
     @if (store.analysisResult()?.recommendedImprovements?.length === 0) {
-      <div class="text-sm text-center font-medium text-stone-500 mt-8">No recommendations available.</div>
+      <div class="text-sm text-center font-medium text-stone-500 mt-8">
+        {{ 'DASHBOARD.CARDS.RECOMMENDATIONS.NO_RECOMMENDATIONS' | translate }}
+      </div>
     } @else {
       @for (
         recommendation of store.analysisResult()?.recommendedImprovements ?? [];

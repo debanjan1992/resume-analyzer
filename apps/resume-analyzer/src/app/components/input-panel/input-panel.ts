@@ -6,7 +6,6 @@ import {
   effect,
   inject,
   OnInit,
-  output,
   signal,
 } from '@angular/core';
 import {
@@ -14,14 +13,14 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { ResumeService } from '../../resume.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ResumeAnalysis, ResumeAnalysisRequest } from '@resume-analyzer/models';
 import { ResumeAnalysisStore } from '../../resume.store';
+
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-input-panel',
-  imports: [ReactiveFormsModule, DecimalPipe],
+  imports: [ReactiveFormsModule, DecimalPipe, TranslateModule],
   templateUrl: './input-panel.html',
   styleUrl: './input-panel.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -34,21 +33,12 @@ export class InputPanel implements OnInit {
   form = this.fb.group({
     resumeText: ['', Validators.required],
     targetJobDescription: ['', Validators.required],
-    apiKey: ['']
+    apiKey: [''],
   });
   selectedFile = signal<File | null>(null);
 
-  resumePlaceholder = signal(
-    `Resume content will appear here after upload, or you can paste it directly.`,
-  );
-  jobDescriptionPlaceholder =
-    signal(`Paste the target job description you are applying for here...
-    
-    Requirements:
-    - 5+ years experience in React
-    - Excellent problem-solving skills
-    - Strong communication and teamwork abilities
-    `);
+  resumePlaceholder = signal('INPUT.RESUME.PLACEHOLDER');
+  jobDescriptionPlaceholder = signal('INPUT.JOB_DESCRIPTION.PLACEHOLDER');
 
   get resumeTextControl() {
     return this.form.get('resumeText');
@@ -65,11 +55,13 @@ export class InputPanel implements OnInit {
   }
 
   ngOnInit() {
-    this.form.valueChanges.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((value) => {
-      this.store.setJobDescription(value.targetJobDescription || '');
-      this.store.setResumeText(value.resumeText || '');
-      this.store.setAPIKey(value.apiKey || '');
-    });
+    this.form.valueChanges
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((value) => {
+        this.store.setJobDescription(value.targetJobDescription || '');
+        this.store.setResumeText(value.resumeText || '');
+        this.store.setAPIKey(value.apiKey || '');
+      });
   }
 
   submit() {
@@ -79,18 +71,21 @@ export class InputPanel implements OnInit {
     this.store.analyzeResume(false);
   }
 
-  onFileSelected(event: any) {
-    const file: File = event.target.files[0];
+  onFileSelected(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (!input.files?.length) return;
+    const file = input.files[0];
     if (file) {
       this.selectedFile.set(file);
-      this.extractTextFromFile()
+      this.extractTextFromFile();
     }
   }
 
   extractTextFromFile() {
-    if (this.selectedFile() == null) {
+    const file = this.selectedFile();
+    if (!file) {
       return;
     }
-    this.store.extractTextFromFile(this.selectedFile()!);
+    this.store.extractTextFromFile(file);
   }
 }
