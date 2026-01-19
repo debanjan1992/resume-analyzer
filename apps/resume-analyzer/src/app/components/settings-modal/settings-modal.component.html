@@ -1,92 +1,112 @@
-@if (isOpen) {
+<div
+  class="fixed inset-0 z-[100] flex items-center justify-center p-4"
+  role="dialog"
+  aria-labelledby="modal-title"
+  aria-modal="true"
+>
+  <!-- Backdrop -->
   <div
-    class="fixed inset-0 z-[100] flex items-center justify-center p-4"
-    role="dialog"
-    aria-labelledby="modal-title"
-    aria-modal="true"
+    class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm transition-opacity"
+    (click)="closeModal()"
+    (keyup.escape)="closeModal()"
+    tabindex="0"
+    role="button"
+    aria-label="Close modal"
+  ></div>
+
+  <!-- Modal -->
+  <div
+    class="bg-white rounded-2xl shadow-xl w-full max-w-md relative z-10 overflow-hidden animate-fade-in-up"
   >
-    <!-- Backdrop -->
     <div
-      class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm transition-opacity"
-      (click)="closeModal()"
-      (keyup.escape)="closeModal()"
-      tabindex="0"
-      role="button"
-      aria-label="Close modal"
-    ></div>
-
-    <!-- Modal -->
-    <div
-      class="bg-white rounded-2xl shadow-xl w-full max-w-md relative z-10 overflow-hidden animate-fade-in-up"
+      class="p-6 border-b border-gray-100 flex items-center justify-between bg-gray-50/50"
     >
-      <div
-        class="p-6 border-b border-gray-100 flex items-center justify-between bg-gray-50/50"
+      <h3
+        id="modal-title"
+        class="text-lg font-bold text-gray-900 flex items-center gap-2"
       >
-        <h3
-          id="modal-title"
-          class="text-lg font-bold text-gray-900 flex items-center gap-2"
-        >
-          <span class="material-symbols-outlined text-blue-600">settings</span>
-          {{ 'SETTINGS.TITLE' | translate }}
-        </h3>
-        <button
-          (click)="closeModal()"
-          class="text-gray-400 hover:text-gray-600 p-1 rounded-full hover:bg-gray-100 transition-colors cursor-pointer"
-          [attr.aria-label]="'SETTINGS.CANCEL' | translate"
-        >
-          <span class="material-symbols-outlined">close</span>
-        </button>
-      </div>
+        <span class="material-symbols-outlined text-blue-600">settings</span>
+        {{ 'SETTINGS.TITLE' | translate }}
+      </h3>
+      <button
+        (click)="closeModal()"
+        class="text-gray-400 hover:text-gray-600 p-1 rounded-full hover:bg-gray-100 transition-colors cursor-pointer"
+        [attr.aria-label]="'SETTINGS.CANCEL' | translate"
+      >
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
 
-      <div class="p-6 space-y-4">
-        <div>
-          <label
-            for="apiKeyInput"
-            class="block text-sm font-medium text-gray-700 mb-1"
-          >
-            {{ 'SETTINGS.API_KEY_LABEL' | translate }}
-          </label>
-          <div class="relative">
-            <input
-              id="apiKeyInput"
-              type="password"
-              [(ngModel)]="apiKey"
-              required
-              #apiKeyInputModel="ngModel"
-              class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition-all pl-10"
-              [placeholder]="'SETTINGS.API_KEY_PLACEHOLDER' | translate"
-              [class.border-red-500]="
-                apiKeyInputModel.invalid && apiKeyInputModel.touched
-              "
-            />
-            <div class="absolute left-3 top-2.5 text-gray-400">
-              <span class="material-symbols-outlined text-sm">key</span>
-            </div>
+    <div class="p-6 space-y-6">
+      <!-- User Name Input -->
+      <div>
+        <label
+          for="userName"
+          class="block text-sm font-medium text-gray-700 mb-1"
+        >
+          {{ 'SETTINGS.USER_NAME_LABEL' | translate }}
+        </label>
+        <div class="relative">
+          <input
+            id="userName"
+            type="text"
+            [(ngModel)]="userName"
+            class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition-all pl-10"
+            [placeholder]="'SETTINGS.USER_NAME_PLACEHOLDER' | translate"
+          />
+          <div class="absolute left-3 top-2.5 text-gray-400">
+            <span class="material-symbols-outlined text-sm">person</span>
           </div>
-          @if (apiKeyInputModel.invalid && apiKeyInputModel.touched) {
-            <p class="text-xs text-red-500 mt-1">
-              {{ 'SETTINGS.API_KEY_REQUIRED' | translate }}
-            </p>
-          }
         </div>
       </div>
 
-      <div
-        class="p-6 border-t border-gray-100 bg-gray-50/50 flex justify-end gap-3"
-      >
-        <button
-          (click)="closeModal()"
-          class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-100 rounded-lg transition-colors cursor-pointer"
-        >
-          {{ 'SETTINGS.CANCEL' | translate }}
-        </button>
-        <button
-          (click)="save()"
-          class="px-6 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg shadow-sm hover:shadow transition-all disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
-        >
-          {{ 'SETTINGS.SAVE' | translate }}
-        </button>
+      <!-- API Key Input -->
+      <div>
+        <div class="flex justify-between items-center mb-1">
+          <label
+            for="apiKeyInput"
+            class="block text-sm font-medium text-gray-700"
+          >
+            {{ 'SETTINGS.API_KEY_LABEL' | translate }}
+          </label>
+          <button
+            (click)="clearApiKey()"
+            class="text-xs text-blue-600 hover:text-blue-800 font-medium cursor-pointer"
+          >
+            {{ 'SETTINGS.CLEAR' | translate }}
+          </button>
+        </div>
+        <div class="relative">
+          <input
+            id="apiKeyInput"
+            type="password"
+            [(ngModel)]="apiKey"
+            #apiKeyInputModel="ngModel"
+            class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition-all pl-10"
+            [placeholder]="'SETTINGS.API_KEY_PLACEHOLDER' | translate"
+          />
+          <div class="absolute left-3 top-2.5 text-gray-400">
+            <span class="material-symbols-outlined text-sm">key</span>
+          </div>
+        </div>
       </div>
     </div>
+
+    <div
+      class="p-6 border-t border-gray-100 bg-stone-200 flex justify-end gap-3"
+    >
+      <button
+        (click)="closeModal()"
+        class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-100 rounded-lg transition-colors cursor-pointer"
+      >
+        {{ 'SETTINGS.CANCEL' | translate }}
+      </button>
+      <button
+        (click)="save()"
+        class="px-6 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg shadow-sm hover:shadow transition-all cursor-pointer"
+      >
+        {{ 'SETTINGS.SAVE' | translate }}
+      </button>
+    </div>
   </div>
-}
+</div>

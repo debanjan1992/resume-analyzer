@@ -67,21 +67,16 @@
     <div
       class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-sm"
     >
-      {{ 'HEADER.INITIALS' | translate }}
+      {{ userInitials() }}
     </div>
 
-    <div class="text-right">
+    <div class="text-left">
       <p class="text-slate-900 font-semibold text-sm leading-tight">
-        {{ 'HEADER.USER.NAME' | translate }}
+        {{ store.userName() || ('HEADER.USER.NAME' | translate) }}
       </p>
       <p class="text-slate-400 text-xs font-medium">
         {{ 'HEADER.USER.PLAN' | translate }}
       </p>
     </div>
   </div>
-
-  <app-settings-modal
-    [isOpen]="isSettingsOpen"
-    (closeEvent)="isSettingsOpen = false"
-  ></app-settings-modal>
 </header>

@@ -124,7 +124,7 @@
           >
             <!-- Score Circle -->
             <div
-              class="w-12 h-12 rounded-full flex items-center justify-center font-bold text-sm shrink-0"
+              class="w-16 h-16 rounded-full flex items-center justify-center font-bold text-xl shrink-0"
               [class.bg-green-100]="entry.analysisResult.overallScore >= 80"
               [class.text-green-700]="entry.analysisResult.overallScore >= 80"
               [class.bg-orange-100]="
@@ -150,6 +150,11 @@
                   entry.analysisResult.targetRole ||
                     ('DASHBOARD.DEFAULT_ANALYSIS_NAME' | translate)
                 }}
+                @if (entry.analysisResult.targetCompany) {
+                  <span class="text-slate-400 font-normal ml-1">
+                    • {{ entry.analysisResult.targetCompany }}
+                  </span>
+                }
               </h3>
               <div class="flex items-center gap-3 text-sm text-slate-500">
                 <span

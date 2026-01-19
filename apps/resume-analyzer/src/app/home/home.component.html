@@ -1,4 +1,28 @@
 <app-hero></app-hero>
+
+<div class="max-w-3xl mx-auto mb-8 px-6 animate-fade-in-up">
+  <div
+    class="bg-blue-50 border border-blue-100 rounded-xl p-4 flex items-center justify-between shadow-sm"
+  >
+    <div class="flex items-center gap-3">
+      <div class="bg-blue-100 p-2 rounded-lg text-blue-600">
+        <span class="material-symbols-outlined text-sm">key</span>
+      </div>
+      <div>
+        <p class="text-blue-900 font-medium text-sm">
+          {{ 'HOME.NUDGE.TEXT' | translate }}
+        </p>
+        <button
+          (click)="openSettings()"
+          class="text-blue-600 hover:text-blue-800 text-xs font-semibold hover:underline mt-0.5 cursor-pointer"
+        >
+          {{ 'HOME.NUDGE.ACTION' | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <section>
   @if (store.isAnalyzing()) {
     <div class="analysis-in-progress mb-16">

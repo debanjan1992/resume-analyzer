@@ -1,15 +1,8 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  Output,
-  inject,
-  OnChanges,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { ResumeAnalysisStore } from '../../resume.store';
+import { ModalService } from '../../services/modal.service';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -19,29 +12,32 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './settings-modal.component.html',
   styleUrl: './settings-modal.component.scss',
 })
-export class SettingsModalComponent implements OnChanges {
-  @Input() isOpen = false;
-  @Output() closeEvent = new EventEmitter<void>();
-
+export class SettingsModalComponent implements OnInit {
   store = inject(ResumeAnalysisStore);
+  modalService = inject(ModalService);
   apiKey = '';
+  userName = '';
 
   constructor() {
     this.apiKey = this.store.apiKey();
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes['isOpen'] && this.isOpen) {
-      this.apiKey = this.store.apiKey();
-    }
+  ngOnInit() {
+    this.apiKey = this.store.apiKey();
+    this.userName = this.store.userName();
   }
 
   save() {
     this.store.setAPIKey(this.apiKey);
-    this.closeEvent.emit();
+    this.store.setUserName(this.userName);
+    this.modalService.close();
+  }
+
+  clearApiKey() {
+    this.apiKey = '';
   }
 
   closeModal() {
-    this.closeEvent.emit();
+    this.modalService.close();
   }
 }

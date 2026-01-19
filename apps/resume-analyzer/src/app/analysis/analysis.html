@@ -1,32 +1,74 @@
 <div id="dashboard" class="my-4">
-  <header class="flex flex-col gap-4 md:flex-row mb-8">
-    <div class="title flex flex-col flex-1 text-center md:text-left">
-      <h1 class="text-3xl font-bold mb-1">
-        {{ 'ANALYSIS_REPORT.TITLE' | translate }}
-      </h1>
-      <h4 class="text-sm text-stone-500">
-        {{ 'ANALYSIS_REPORT.GENERATED_ON' | translate }} {{ date | date :
-        'mediumDate'}} - {{ 'ANALYSIS_REPORT.TARGET_ROLE' | translate }}:
-        <span class="font-medium text-stone-800"
-          >{{store.analysisResult()?.targetRole}}</span
+  <header class="flex flex-col gap-6 mb-8">
+    <!-- Row 1: Title and Actions -->
+    <div
+      class="flex flex-col md:flex-row md:items-center justify-between gap-4"
+    >
+      <div class="title text-center md:text-left">
+        <h1 class="text-3xl font-bold mb-1">
+          {{ 'ANALYSIS_REPORT.TITLE' | translate }}
+        </h1>
+        <h4 class="text-sm text-stone-500">
+          {{ 'ANALYSIS_REPORT.GENERATED_ON' | translate }} {{ date | date :
+          'mediumDate'}}
+        </h4>
+      </div>
+      <div class="actions flex justify-center items-center gap-2">
+        <button
+          class="flex items-center gap-2 px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-medium shadow transition-colors text-sm cursor-pointer"
+          [routerLink]="['/editor']"
         >
-      </h4>
+          <span class="material-symbols-outlined text-[20px]">upload</span>
+          <span>{{ 'ANALYSIS_REPORT.RE_UPLOAD' | translate }}</span>
+        </button>
+        <button
+          (click)="downloadReport()"
+          class="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-lg bg-white text-gray-700 hover:bg-gray-100 transition-colors font-medium text-sm cursor-pointer"
+        >
+          <span class="material-symbols-outlined text-[20px]">download</span>
+          <span>{{ 'ANALYSIS_REPORT.DOWNLOAD' | translate }}</span>
+        </button>
+      </div>
     </div>
-    <div class="actions flex justify-center items-center gap-2">
-      <button
-        class="flex items-center gap-2 px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-medium shadow transition-colors text-sm cursor-pointer"
-        [routerLink]="['/editor']"
+
+    <!-- Row 2: Badges -->
+    <div class="flex flex-wrap gap-3 justify-center md:justify-start">
+      <!-- Target Role -->
+      <div
+        class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium bg-blue-50 text-blue-700 border border-blue-200"
       >
-        <span class="material-symbols-outlined">upload</span>
-        <span>{{ 'ANALYSIS_REPORT.RE_UPLOAD' | translate }}</span>
-      </button>
-      <button
-        (click)="downloadReport()"
-        class="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-lg bg-white text-gray-700 hover:bg-gray-100 transition-colors font-medium text-sm cursor-pointer"
+        <span class="material-symbols-outlined text-[18px]">work</span>
+        <span class="font-normal text-blue-900"
+          >{{ 'ANALYSIS_REPORT.TARGET_ROLE' | translate }}:</span
+        >
+        <span>{{store.analysisResult()?.targetRole}}</span>
+      </div>
+
+      <!-- Target Company -->
+      @if (store.analysisResult()?.targetCompany) {
+      <div
+        class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium bg-purple-50 text-purple-700 border border-purple-200"
       >
-        <span class="material-symbols-outlined">download</span>
-        <span>{{ 'ANALYSIS_REPORT.DOWNLOAD' | translate }}</span>
-      </button>
+        <span class="material-symbols-outlined text-[18px]">business</span>
+        <span class="font-normal text-purple-900"
+          >{{ 'ANALYSIS_REPORT.TARGET_COMPANY' | translate }}:</span
+        >
+        <span>{{store.analysisResult()?.targetCompany}}</span>
+      </div>
+      }
+
+      <!-- Job Type -->
+      @if (store.analysisResult()?.jobType) {
+      <div
+        class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium bg-emerald-50 text-emerald-700 border border-emerald-200"
+      >
+        <span class="material-symbols-outlined text-[18px]">schedule</span>
+        <span class="font-normal text-emerald-900"
+          >{{ 'ANALYSIS_REPORT.JOB_TYPE' | translate }}:</span
+        >
+        <span>{{store.analysisResult()?.jobType}}</span>
+      </div>
+      }
     </div>
   </header>
   <main>

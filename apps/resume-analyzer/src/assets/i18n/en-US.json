@@ -120,7 +120,10 @@
     "API_KEY_PLACEHOLDER": "Enter your API Key",
     "API_KEY_REQUIRED": "API Key is required",
     "CANCEL": "Cancel",
-    "SAVE": "Save"
+    "SAVE": "Save",
+    "USER_NAME_LABEL": "Your Name",
+    "USER_NAME_PLACEHOLDER": "John Doe",
+    "CLEAR": "Clear"
   },
   "HERO": {
     "TITLE_PREFIX": "Smart",
@@ -130,6 +133,13 @@
       "ATS": "ATS Keyword Check",
       "ACTION": "Action Verb Analysis",
       "SCORING": "Instant Scoring"
+    }
+  },
+  "HOME": {
+    "NUDGE": {
+      "TEXT": "Want unlimited free analysis?",
+      "ACTION": "Use your own API Key",
+      "DISMISS": "Dismiss"
     }
   },
   "INPUT": {
@@ -152,6 +162,15 @@
     },
     "BUTTON": {
       "ANALYZE": "Analyze Resume"
+    },
+    "NAME_MODAL": {
+      "TITLE": "Welcome!",
+      "DESCRIPTION": "To personalize your experience, please enter your name.",
+      "LABEL": "Your Name",
+      "PLACEHOLDER": "John Doe",
+      "ERROR_REQUIRED": "Name is required",
+      "CANCEL": "Cancel",
+      "NEXT": "Next"
     }
   },
   "ANALYSIS": {
@@ -174,6 +193,8 @@
     "TITLE": "Analysis Report",
     "GENERATED_ON": "Generated on",
     "TARGET_ROLE": "Target Role",
+    "TARGET_COMPANY": "Target Company",
+    "JOB_TYPE": "Job Type",
     "RE_UPLOAD": "Re-upload",
     "DOWNLOAD": "Download Report",
     "CRITICAL_ALERT": "Your resume has critical issues that need immediate attention. Please review the 'Critical Fixes' section below.",

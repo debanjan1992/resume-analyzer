@@ -21,6 +21,7 @@ interface ResumeAnalysisState {
   jobDescription: string;
   resumeText: string;
   currentId: string | null;
+  userName: string;
 }
 
 export interface HistoryEntry {
@@ -39,6 +40,7 @@ const initialState: ResumeAnalysisState = {
   resumeText: '',
   apiKey: localStorage.getItem('gemini-api-key') || '',
   currentId: null,
+  userName: localStorage.getItem('user-name') || '',
 };
 
 export const ResumeAnalysisStore = signalStore(
@@ -50,6 +52,11 @@ export const ResumeAnalysisStore = signalStore(
       };
       const setResumeText = (resumeText: string) => {
         patchState(store, { resumeText });
+      };
+
+      const setUserName = (userName: string) => {
+        localStorage.setItem('user-name', userName);
+        patchState(store, { userName });
       };
 
       const setAPIKey = (apiKey: string) => {
@@ -173,6 +180,7 @@ export const ResumeAnalysisStore = signalStore(
         setJobDescription,
         setResumeText,
         setAPIKey,
+        setUserName,
         extractTextFromFile,
         analyzeResume,
         loadHistoryEntry,

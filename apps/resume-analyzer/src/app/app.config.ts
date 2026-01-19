@@ -5,7 +5,8 @@ import {
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { appRoutes } from './app.routes';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { errorInterceptor } from './interceptors/error.interceptor';
 import { ResumeService } from './resume.service';
 import { ResumeAnalysisStore } from './resume.store';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -28,7 +29,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideRouter(appRoutes),
-    provideHttpClient(),
+    provideHttpClient(withInterceptors([errorInterceptor])),
     importProvidersFrom(
       TranslateModule.forRoot({
         loader: {

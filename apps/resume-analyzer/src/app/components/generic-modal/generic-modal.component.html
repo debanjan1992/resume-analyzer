@@ -1,0 +1,54 @@
+@if (isOpen) {
+  <div
+    class="fixed inset-0 z-[100] flex items-center justify-center p-2 bg-black/50 backdrop-blur-sm"
+    (click)="close()"
+    (keydown.escape)="close()"
+    tabindex="0"
+    role="button"
+    aria-label="Close modal"
+  >
+    <div
+      class="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden transform transition-all cursor-default"
+      (click)="$event.stopPropagation()"
+      (keydown)="$event.stopPropagation()"
+      tabindex="-1"
+      role="dialog"
+      aria-modal="true"
+    >
+      <!-- Header -->
+      <div
+        class="p-6 border-b border-gray-100 flex justify-between items-center"
+      >
+        <h3 class="text-xl font-bold text-gray-900">{{ title }}</h3>
+        <button
+          (click)="close()"
+          class="text-gray-400 hover:text-gray-600 transition-colors cursor-pointer"
+        >
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+
+      <!-- Body -->
+      <div>
+        @if (content) {
+          <p class="text-gray-600">{{ content }}</p>
+        } @else {
+          <ng-content></ng-content>
+        }
+      </div>
+      @if (content) {
+        <!-- Footer -->
+        <div
+          class="p-6 border-t border-gray-50 bg-gray-50 flex justify-end gap-3"
+        >
+          <button
+            (click)="close()"
+            class="px-6 py-2 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition-colors shadow-lg shadow-blue-200"
+          >
+            Okay
+          </button>
+        </div>
+      }
+    </div>
+  </div>
+}
