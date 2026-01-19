@@ -179,4 +179,335 @@
       </div>
     </div>
   </section>
+
+  <!-- How It Works Section -->
+  <section class="py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h3
+          class="text-blue-600 font-bold tracking-widest uppercase text-sm mb-3"
+        >
+          {{ 'LANDING.HOW_IT_WORKS.LABEL' | translate }}
+        </h3>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900">
+          {{ 'LANDING.HOW_IT_WORKS.TITLE' | translate }}
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-12 relative">
+        <!-- Connecting Line (Desktop) -->
+        <div
+          class="hidden md:block absolute top-12 left-[16%] right-[16%] h-0.5 bg-gray-200 -z-10"
+        ></div>
+
+        <!-- Step 1 -->
+        <div class="relative flex flex-col items-center text-center">
+          <div
+            class="w-24 h-24 bg-white rounded-full flex items-center justify-center shadow-lg border-4 border-white mb-6"
+          >
+            <span class="material-symbols-outlined text-blue-600 text-4xl"
+              >upload_file</span
+            >
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">
+            {{ 'LANDING.HOW_IT_WORKS.STEPS.UPLOAD.TITLE' | translate }}
+          </h3>
+          <p class="text-gray-600">
+            {{ 'LANDING.HOW_IT_WORKS.STEPS.UPLOAD.DESC' | translate }}
+          </p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="relative flex flex-col items-center text-center">
+          <div
+            class="w-24 h-24 bg-white rounded-full flex items-center justify-center shadow-lg border-4 border-white mb-6"
+          >
+            <span class="material-symbols-outlined text-purple-600 text-4xl"
+              >psychology</span
+            >
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">
+            {{ 'LANDING.HOW_IT_WORKS.STEPS.ANALYZE.TITLE' | translate }}
+          </h3>
+          <p class="text-gray-600">
+            {{ 'LANDING.HOW_IT_WORKS.STEPS.ANALYZE.DESC' | translate }}
+          </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="relative flex flex-col items-center text-center">
+          <div
+            class="w-24 h-24 bg-white rounded-full flex items-center justify-center shadow-lg border-4 border-white mb-6"
+          >
+            <span class="material-symbols-outlined text-green-600 text-4xl"
+              >rocket_launch</span
+            >
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">
+            {{ 'LANDING.HOW_IT_WORKS.STEPS.OPTIMIZE.TITLE' | translate }}
+          </h3>
+          <p class="text-gray-600">
+            {{ 'LANDING.HOW_IT_WORKS.STEPS.OPTIMIZE.DESC' | translate }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h3
+          class="text-blue-600 font-bold tracking-widest uppercase text-sm mb-3"
+        >
+          {{ 'LANDING.TESTIMONIALS.LABEL' | translate }}
+        </h3>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900">
+          {{ 'LANDING.TESTIMONIALS.TITLE' | translate }}
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Testimonial 1 -->
+        <div class="bg-gray-50 p-8 rounded-2xl relative">
+          <span
+            class="material-symbols-outlined text-4xl text-blue-200 absolute top-6 left-6"
+            >format_quote</span
+          >
+          <div class="relative z-10 pt-4">
+            <p class="text-gray-700 italic mb-6">
+              "{{ 'LANDING.TESTIMONIALS.USER_1.QUOTE' | translate }}"
+            </p>
+            <div class="flex items-center gap-3">
+              <div
+                class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center font-bold text-blue-600"
+              >
+                S
+              </div>
+              <div>
+                <p class="font-bold text-gray-900">
+                  {{ 'LANDING.TESTIMONIALS.USER_1.NAME' | translate }}
+                </p>
+                <p class="text-sm text-gray-500">
+                  {{ 'LANDING.TESTIMONIALS.USER_1.ROLE' | translate }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="bg-gray-50 p-8 rounded-2xl relative">
+          <span
+            class="material-symbols-outlined text-4xl text-blue-200 absolute top-6 left-6"
+            >format_quote</span
+          >
+          <div class="relative z-10 pt-4">
+            <p class="text-gray-700 italic mb-6">
+              "{{ 'LANDING.TESTIMONIALS.USER_2.QUOTE' | translate }}"
+            </p>
+            <div class="flex items-center gap-3">
+              <div
+                class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center font-bold text-purple-600"
+              >
+                M
+              </div>
+              <div>
+                <p class="font-bold text-gray-900">
+                  {{ 'LANDING.TESTIMONIALS.USER_2.NAME' | translate }}
+                </p>
+                <p class="text-sm text-gray-500">
+                  {{ 'LANDING.TESTIMONIALS.USER_2.ROLE' | translate }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="bg-gray-50 p-8 rounded-2xl relative">
+          <span
+            class="material-symbols-outlined text-4xl text-blue-200 absolute top-6 left-6"
+            >format_quote</span
+          >
+          <div class="relative z-10 pt-4">
+            <p class="text-gray-700 italic mb-6">
+              "{{ 'LANDING.TESTIMONIALS.USER_3.QUOTE' | translate }}"
+            </p>
+            <div class="flex items-center gap-3">
+              <div
+                class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center font-bold text-green-600"
+              >
+                J
+              </div>
+              <div>
+                <p class="font-bold text-gray-900">
+                  {{ 'LANDING.TESTIMONIALS.USER_3.NAME' | translate }}
+                </p>
+                <p class="text-sm text-gray-500">
+                  {{ 'LANDING.TESTIMONIALS.USER_3.ROLE' | translate }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-24 bg-white">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h3
+          class="text-blue-600 font-bold tracking-widest uppercase text-sm mb-3"
+        >
+          {{ 'LANDING.FAQ.LABEL' | translate }}
+        </h3>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900">
+          {{ 'LANDING.FAQ.TITLE' | translate }}
+        </h2>
+      </div>
+
+      <div class="space-y-4">
+        <!-- Q1 -->
+        <div class="border border-gray-200 rounded-xl overflow-hidden">
+          <button
+            class="w-full flex items-center justify-between p-6 text-left bg-white hover:bg-gray-50 transition-colors"
+            (click)="toggleFaq(1)"
+          >
+            <span class="font-bold text-gray-900">{{
+              'LANDING.FAQ.Q1.QUESTION' | translate
+            }}</span>
+            <span
+              class="material-symbols-outlined transition-transform duration-300"
+              [class.rotate-180]="openFaqIndex === 1"
+              >keyboard_arrow_down</span
+            >
+          </button>
+          <div
+            class="bg-gray-50 overflow-hidden transition-all duration-300 ease-in-out"
+            [style.max-height.px]="openFaqIndex === 1 ? 200 : 0"
+            [class.opacity-100]="openFaqIndex === 1"
+            [class.opacity-0]="openFaqIndex !== 1"
+          >
+            <div class="p-6 pt-0 text-gray-600">
+              {{ 'LANDING.FAQ.Q1.ANSWER' | translate }}
+            </div>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="border border-gray-200 rounded-xl overflow-hidden">
+          <button
+            class="w-full flex items-center justify-between p-6 text-left bg-white hover:bg-gray-50 transition-colors"
+            (click)="toggleFaq(2)"
+          >
+            <span class="font-bold text-gray-900">{{
+              'LANDING.FAQ.Q2.QUESTION' | translate
+            }}</span>
+            <span
+              class="material-symbols-outlined transition-transform duration-300"
+              [class.rotate-180]="openFaqIndex === 2"
+              >keyboard_arrow_down</span
+            >
+          </button>
+          <div
+            class="bg-gray-50 overflow-hidden transition-all duration-300 ease-in-out"
+            [style.max-height.px]="openFaqIndex === 2 ? 200 : 0"
+            [class.opacity-100]="openFaqIndex === 2"
+            [class.opacity-0]="openFaqIndex !== 2"
+          >
+            <div class="p-6 pt-0 text-gray-600">
+              {{ 'LANDING.FAQ.Q2.ANSWER' | translate }}
+            </div>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="border border-gray-200 rounded-xl overflow-hidden">
+          <button
+            class="w-full flex items-center justify-between p-6 text-left bg-white hover:bg-gray-50 transition-colors"
+            (click)="toggleFaq(3)"
+          >
+            <span class="font-bold text-gray-900">{{
+              'LANDING.FAQ.Q3.QUESTION' | translate
+            }}</span>
+            <span
+              class="material-symbols-outlined transition-transform duration-300"
+              [class.rotate-180]="openFaqIndex === 3"
+              >keyboard_arrow_down</span
+            >
+          </button>
+          <div
+            class="bg-gray-50 overflow-hidden transition-all duration-300 ease-in-out"
+            [style.max-height.px]="openFaqIndex === 3 ? 200 : 0"
+            [class.opacity-100]="openFaqIndex === 3"
+            [class.opacity-0]="openFaqIndex !== 3"
+          >
+            <div class="p-6 pt-0 text-gray-600">
+              {{ 'LANDING.FAQ.Q3.ANSWER' | translate }}
+            </div>
+          </div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="border border-gray-200 rounded-xl overflow-hidden">
+          <button
+            class="w-full flex items-center justify-between p-6 text-left bg-white hover:bg-gray-50 transition-colors"
+            (click)="toggleFaq(4)"
+          >
+            <span class="font-bold text-gray-900">{{
+              'LANDING.FAQ.Q4.QUESTION' | translate
+            }}</span>
+            <span
+              class="material-symbols-outlined transition-transform duration-300"
+              [class.rotate-180]="openFaqIndex === 4"
+              >keyboard_arrow_down</span
+            >
+          </button>
+          <div
+            class="bg-gray-50 overflow-hidden transition-all duration-300 ease-in-out"
+            [style.max-height.px]="openFaqIndex === 4 ? 200 : 0"
+            [class.opacity-100]="openFaqIndex === 4"
+            [class.opacity-0]="openFaqIndex !== 4"
+          >
+            <div class="p-6 pt-0 text-gray-600">
+              {{ 'LANDING.FAQ.Q4.ANSWER' | translate }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-300 py-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid md:grid-cols-4 gap-8 mb-8">
+        <div class="col-span-1 md:col-span-1">
+          <div class="flex items-center gap-2 mb-4">
+            <div class="bg-blue-600 p-1 rounded-lg">
+              <span class="material-symbols-outlined text-white text-sm"
+                >description</span
+              >
+            </div>
+            <span class="font-bold text-lg text-white">{{
+              'HEADER.TITLE' | translate
+            }}</span>
+          </div>
+          <p class="text-sm text-gray-400">
+            {{ 'HERO.SUBTITLE' | translate }}
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="border-t border-gray-800 pt-8 text-center text-sm text-gray-500"
+      >
+        {{ 'FOOTER.COPYRIGHT' | translate }}
+      </div>
+    </div>
+  </footer>
 </div>

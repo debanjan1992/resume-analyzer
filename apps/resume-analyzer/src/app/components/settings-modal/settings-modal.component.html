@@ -31,7 +31,7 @@
         </h3>
         <button
           (click)="closeModal()"
-          class="text-gray-400 hover:text-gray-600 p-1 rounded-full hover:bg-gray-100 transition-colors"
+          class="text-gray-400 hover:text-gray-600 p-1 rounded-full hover:bg-gray-100 transition-colors cursor-pointer"
           [attr.aria-label]="'SETTINGS.CANCEL' | translate"
         >
           <span class="material-symbols-outlined">close</span>
@@ -76,14 +76,14 @@
       >
         <button
           (click)="closeModal()"
-          class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-100 rounded-lg transition-colors"
+          class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-100 rounded-lg transition-colors cursor-pointer"
         >
           {{ 'SETTINGS.CANCEL' | translate }}
         </button>
         <button
           (click)="save()"
           [disabled]="apiKeyInputModel.invalid"
-          class="px-6 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg shadow-sm hover:shadow transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+          class="px-6 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg shadow-sm hover:shadow transition-all disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
         >
           {{ 'SETTINGS.SAVE' | translate }}
         </button>

@@ -43,7 +43,76 @@
         "TITLE": "Power Verbs",
         "DESC": "Transform weak passive voice into strong, action-oriented impact language."
       }
+    },
+    "HOW_IT_WORKS": {
+      "LABEL": "How It Works",
+      "TITLE": "Three simple steps to your dream job",
+      "STEPS": {
+        "UPLOAD": {
+          "TITLE": "Upload Resume",
+          "DESC": "Upload your existing PDF resume or paste the text directly into our editor."
+        },
+        "ANALYZE": {
+          "TITLE": "AI Analysis",
+          "DESC": "Our advanced AI compares your profile against the job description in seconds."
+        },
+        "OPTIMIZE": {
+          "TITLE": "Optimize & Apply",
+          "DESC": "Apply the suggested improvements and export your ATS-friendly resume."
+        }
+      }
+    },
+    "TESTIMONIALS": {
+      "LABEL": "Testimonials",
+      "TITLE": "Loved by job seekers worldwide",
+      "USER_1": {
+        "QUOTE": "This tool completely transformed my job search. I went from zero interviews to three offers in two weeks!",
+        "NAME": "Sarah J.",
+        "ROLE": "Product Designer"
+      },
+      "USER_2": {
+        "QUOTE": "The keyword gap analysis is a game saver. It found critical skills I had forgotten to list.",
+        "NAME": "Michael C.",
+        "ROLE": "Software Engineer"
+      },
+      "USER_3": {
+        "QUOTE": "Simple, fast, and remarkably accurate. The power verb suggestions made my experience sound so much more impressive.",
+        "NAME": "Jessica T.",
+        "ROLE": "Marketing Manager"
+      }
+    },
+    "FAQ": {
+      "LABEL": "FAQ",
+      "TITLE": "Frequently Asked Questions",
+      "Q1": {
+        "QUESTION": "Is this tool free?",
+        "ANSWER": "Yes! We offer a generous free tier that allows you to analyze your resume and get basic insights."
+      },
+      "Q2": {
+        "QUESTION": "Do you store my data?",
+        "ANSWER": "Your privacy is our top priority. Your API key is stored locally on your device, and resume data is only used for the duration of the analysis."
+      },
+      "Q3": {
+        "QUESTION": "Can I use my own API Key?",
+        "ANSWER": "Absolutely. You can plug in your own Google Gemini API key in the settings menu for unlimited personal analysis."
+      },
+      "Q4": {
+        "QUESTION": "Does it work for all industries?",
+        "ANSWER": "Yes, our AI is trained on millions of job descriptions across all major industries, from Tech and Finance to Healthcare and Creative Arts."
+      }
     }
+  },
+  "FOOTER": {
+    "PRODUCT": "Product",
+    "FEATURES": "Features",
+    "PRICING": "Pricing",
+    "RESOURCES": "Resources",
+    "BLOG": "Blog",
+    "GUIDES": "Guides",
+    "LEGAL": "Legal",
+    "PRIVACY": "Privacy",
+    "TERMS": "Terms",
+    "COPYRIGHT": "© 2024 Resume Analyzer. All rights reserved."
   },
   "SETTINGS": {
     "TITLE": "Settings",

@@ -1,14 +1,5 @@
 <div class="container mx-auto px-4 py-8">
   <div class="flex items-center gap-4 mb-8">
-    <button
-      routerLink="/"
-      class="p-2 rounded-full hover:bg-gray-100 transition-colors cursor-pointer"
-      title="Back to Home"
-    >
-      <span class="material-symbols-outlined text-gray-600 p-1"
-        >arrow_back</span
-      >
-    </button>
     <h1 class="text-3xl font-bold text-gray-800">
       {{ 'HISTORY.TITLE' | translate }}
     </h1>
@@ -21,7 +12,7 @@
       >
       <p class="text-gray-600">{{ 'HISTORY.NO_HISTORY' | translate }}</p>
       <a
-        routerLink="/"
+        routerLink="/editor"
         class="text-indigo-600 hover:text-indigo-800 font-medium mt-2 inline-block"
         >{{ 'HISTORY.NEW_ANALYSIS' | translate }}</a
       >

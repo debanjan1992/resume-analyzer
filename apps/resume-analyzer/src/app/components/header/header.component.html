@@ -26,49 +26,39 @@
       </h1>
     </div>
   </div>
-
-  <nav
-    class="bg-slate-100 p-1 rounded-full flex items-center gap-1 hidden md:block"
-  >
-    <button
-      routerLink="/editor"
-      routerLinkActive="bg-white text-slate-800 shadow-sm"
-      [routerLinkActiveOptions]="{ exact: true }"
-      class="text-slate-500 hover:text-slate-700 px-5 py-1.5 rounded-full text-sm font-medium transition-colors cursor-pointer"
-    >
-      {{ 'HEADER.NAV.EDITOR' | translate }}
-    </button>
-    @if (store.currentId()) {
+  <div class="flex-1 flex justify-center">
+    <nav class="bg-slate-100 p-1 rounded-full flex items-center gap-1">
       <button
-        [routerLink]="['/analysis', store.currentId()]"
+        routerLink="/editor"
+        routerLinkActive="bg-white text-slate-800 shadow-sm"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="text-slate-500 hover:text-slate-700 px-5 py-1.5 rounded-full text-sm font-medium transition-colors cursor-pointer"
+      >
+        {{ 'HEADER.NAV.EDITOR' | translate }}
+      </button>
+      @if (store.currentId()) {
+        <button
+          [routerLink]="['/analysis', store.currentId()]"
+          routerLinkActive="bg-white text-slate-800 shadow-sm"
+          class="text-slate-500 hover:text-slate-700 px-5 py-1.5 rounded-full text-sm font-medium transition-colors cursor-pointer"
+        >
+          {{ 'HEADER.NAV.ANALYSIS' | translate }}
+        </button>
+      }
+      <button
+        routerLink="/history"
         routerLinkActive="bg-white text-slate-800 shadow-sm"
         class="text-slate-500 hover:text-slate-700 px-5 py-1.5 rounded-full text-sm font-medium transition-colors cursor-pointer"
       >
-        {{ 'HEADER.NAV.ANALYSIS' | translate }}
+        {{ 'HEADER.NAV.HISTORY' | translate }}
       </button>
-    }
-    <button
-      routerLink="/history"
-      routerLinkActive="bg-white text-slate-800 shadow-sm"
-      class="text-slate-500 hover:text-slate-700 px-5 py-1.5 rounded-full text-sm font-medium transition-colors cursor-pointer"
-    >
-      {{ 'HEADER.NAV.HISTORY' | translate }}
-    </button>
-  </nav>
+    </nav>
+  </div>
 
   <div class="flex items-center gap-4">
-    <div class="text-right hidden sm:block">
-      <p class="text-slate-900 font-semibold text-sm leading-tight">
-        {{ 'HEADER.USER.NAME' | translate }}
-      </p>
-      <p class="text-slate-400 text-xs font-medium">
-        {{ 'HEADER.USER.PLAN' | translate }}
-      </p>
-    </div>
-
     <button
       (click)="toggleSettings()"
-      class="relative p-2 text-slate-400 hover:text-slate-600 transition-colors"
+      class="relative p-2 text-slate-400 hover:text-slate-600 transition-colors cursor-pointer"
       [attr.aria-label]="'SETTINGS.TITLE' | translate"
     >
       <span class="material-symbols-outlined">settings</span>
@@ -78,6 +68,15 @@
       class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-sm"
     >
       {{ 'HEADER.INITIALS' | translate }}
+    </div>
+
+    <div class="text-right">
+      <p class="text-slate-900 font-semibold text-sm leading-tight">
+        {{ 'HEADER.USER.NAME' | translate }}
+      </p>
+      <p class="text-slate-400 text-xs font-medium">
+        {{ 'HEADER.USER.PLAN' | translate }}
+      </p>
     </div>
   </div>
 

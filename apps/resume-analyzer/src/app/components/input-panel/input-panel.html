@@ -1,8 +1,8 @@
 <div
-  class="input-panel-card rounded-lg shadow-md p-8 bg-white border-t-[6px] border-indigo-600"
+  class="input-panel-card rounded-lg shadow-md bg-white border-t-[6px] border-indigo-600"
 >
   <form [formGroup]="form" (ngSubmit)="submit()" class="flex flex-col">
-    <div class="inputs inline-flex flex-col lg:flex-row gap-12">
+    <div class="inputs inline-flex flex-col lg:flex-row gap-12 p-6">
       <section class="resume flex-1">
         <header class="flex items-center justify-between mb-4">
           <div class="title flex items-center gap-2 font-medium">
@@ -142,7 +142,7 @@
         </div>
       </section>
     </div>
-    <footer class="flex items-center justify-end gap-4 mt-8">
+    <footer class="flex items-center justify-end gap-4 mt-8 bg-stone-100 p-6">
       <button
         class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed text-center"
         type="submit"
