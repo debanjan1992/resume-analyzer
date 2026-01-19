@@ -51,6 +51,8 @@ SCORING RUBRIC (Strictly Follow These Definitions):
   Return ONLY a raw JSON object with this exact schema:
   {
     "targetRole": "string", // Extract the exact Job Title from the JD (e.g. "Senior Frontend Engineer"). If not explicitly stated, infer it.
+    "targetCompany": "string", // Extract the exact Company Name from the JD (e.g. "Google"). If not explicitly stated, infer it.
+    "jobType": "string", // Extract the job type (eg. freelance, contract, full-time etc). If not present infer it.
     "overallScore": number (0-100),
     
     // NEW: Breakdown of why the score is what it is

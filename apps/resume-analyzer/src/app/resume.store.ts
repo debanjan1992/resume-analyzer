@@ -74,9 +74,13 @@ export const ResumeAnalysisStore = signalStore(
           localStorage.getItem('resume-analysis-history') || '[]',
         );
         history.unshift(historyItem);
+
+        // Limit to last 5 entries
+        const limitedHistory = history.slice(0, 5);
+
         localStorage.setItem(
           'resume-analysis-history',
-          JSON.stringify(history),
+          JSON.stringify(limitedHistory),
         );
         return id;
       };

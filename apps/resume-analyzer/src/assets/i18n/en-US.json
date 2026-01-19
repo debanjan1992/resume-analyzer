@@ -254,6 +254,7 @@
       "AVG_SCORE": "Avg. Score",
       "TARGET_ROLES": "Target Roles"
     },
+    "HISTORY_LIMIT_MSG": "Only the last 5 scans are saved automatically.",
     "RECENT_SCANS": "Recent Scans",
     "DEFAULT_ANALYSIS_NAME": "Resume Analysis",
     "SCANNED": "Scanned",

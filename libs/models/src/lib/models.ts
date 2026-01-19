@@ -1,5 +1,7 @@
 export interface ResumeAnalysis {
   targetRole: string;
+  targetCompany: string;
+  jobType: string;
   overallScore: number;
   scoreBreakdown: {
     hardSkills: number;
