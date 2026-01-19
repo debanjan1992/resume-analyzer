@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import Busboy from 'busboy';
 import { extractTextFromPDF } from '../helpers/extract-text-from-pdf';
-import { getGeminiAnalysis } from '../helpers/ai';
+import { getGeminiAnalysis } from '@resume-analyzer/shared';
 import {
   ResumeAnalysisResponse,
   TextExtractionResponse,
@@ -66,6 +66,11 @@ export const analyzeResume = async (
 ) => {
   if (req.method !== 'POST') {
     return res.status(405).end();
+  }
+  const apiKey = (req.query.apiKey as string) || process.env.GEMINI_API_KEY;
+  logger.log('Gemini API Key', apiKey);
+  if (!apiKey) {
+    return res.status(401).json({ error: 'Gemini API Key is missing.' });
   }
   try {
     const { resumeText, jobDescription } = req.body;

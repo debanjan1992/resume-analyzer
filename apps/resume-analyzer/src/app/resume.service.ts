@@ -4,8 +4,9 @@ import {
   ResumeAnalysisResponse,
   TextExtractionResponse,
 } from '@resume-analyzer/models';
-import { Observable } from 'rxjs';
+import { from, map, Observable } from 'rxjs';
 import { environment } from '../environments/environment';
+import { getGeminiAnalysis } from '@resume-analyzer/shared';
 
 @Injectable({
   providedIn: 'root',
@@ -30,7 +31,12 @@ export class ResumeService {
   ): Observable<ResumeAnalysisResponse> {
     let url = environment.apiUrl + '/analyze';
     if (apiKey) {
-      url = url + '?apiKey=' + apiKey;
+      return from(getGeminiAnalysis(resumeText, jobDescription, apiKey)).pipe(
+        map((data) => ({
+          success: true,
+          data,
+        })),
+      );
     }
     if (isDemo) {
       url = '/demo-data.json';

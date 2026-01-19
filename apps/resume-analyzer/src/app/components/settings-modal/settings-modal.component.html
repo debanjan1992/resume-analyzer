@@ -82,7 +82,6 @@
         </button>
         <button
           (click)="save()"
-          [disabled]="apiKeyInputModel.invalid"
           class="px-6 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg shadow-sm hover:shadow transition-all disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
         >
           {{ 'SETTINGS.SAVE' | translate }}

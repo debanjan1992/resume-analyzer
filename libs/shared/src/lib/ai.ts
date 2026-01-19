@@ -5,9 +5,9 @@ import { getPrompt } from './prompt';
 export async function getGeminiAnalysis(
   resumeText: string,
   jobDescription: string,
-  apiKey: string,
+  apiKey?: string,
 ): Promise<ResumeAnalysis> {
-  const googleApiToken = apiKey !== "" ? apiKey : process.env.GOOGLE_API_KEY;
+  const googleApiToken = apiKey ? apiKey : process.env['GEMINI_API_KEY'];
 
   const ai = new GoogleGenAI({
     apiKey: googleApiToken,
@@ -18,7 +18,7 @@ export async function getGeminiAnalysis(
     config: { responseMimeType: 'application/json', temperature: 0, topP: 1 },
     contents: prompt,
   });
-  const text = result.text.trim();
+  const text = result.text!.trim();
 
   return JSON.parse(text);
 }

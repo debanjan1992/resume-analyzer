@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@resume-analyzer/models": ["libs/models/src/index.ts"]
+      "@resume-analyzer/models": ["libs/models/src/index.ts"],
+      "@resume-analyzer/shared": ["libs/shared/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
