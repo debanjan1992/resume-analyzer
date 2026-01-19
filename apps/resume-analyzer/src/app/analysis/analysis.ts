@@ -15,7 +15,7 @@ import { DatePipe } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-dashboard',
+  selector: 'app-analysis',
   imports: [
     AtsScoreComponent,
     ScoreBreakdownComponent,
@@ -31,11 +31,10 @@ import { TranslateModule } from '@ngx-translate/core';
     DatePipe,
     TranslateModule,
   ],
-  templateUrl: './dashboard.html',
-  styleUrl: './dashboard.scss',
+  templateUrl: './analysis.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Dashboard {
+export class Analysis {
   store = inject(ResumeAnalysisStore);
   router = inject(Router);
   route = inject(ActivatedRoute);

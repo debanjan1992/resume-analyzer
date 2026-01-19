@@ -3,7 +3,7 @@
 >
   <header class="flex items-center mb-6">
     <h3 class="font-bold flex-1">
-      {{ 'DASHBOARD.CARDS.QUICK_WINS.TITLE' | translate }}
+      {{ 'ANALYSIS_REPORT.CARDS.QUICK_WINS.TITLE' | translate }}
     </h3>
   </header>
   <div class="content flex flex-col gap-8">
@@ -12,9 +12,11 @@
       [ngTemplateOutletContext]="{
         metric: {
           icon: 'bolt',
-          label: 'DASHBOARD.CARDS.QUICK_WINS.METRICS.POWER_VERBS' | translate,
+          label:
+            'ANALYSIS_REPORT.CARDS.QUICK_WINS.METRICS.POWER_VERBS' | translate,
           sublabel:
-            'DASHBOARD.CARDS.QUICK_WINS.METRICS.ACTION_LANGUAGE' | translate,
+            'ANALYSIS_REPORT.CARDS.QUICK_WINS.METRICS.ACTION_LANGUAGE'
+            | translate,
           value: '' + store.analysisResult()?.powerVerbs?.score || 0 + '/10',
           textColor: 'text-indigo-600',
           bgColor: 'bg-indigo-100',
@@ -26,9 +28,9 @@
       [ngTemplateOutletContext]="{
         metric: {
           icon: 'metro',
-          label: 'DASHBOARD.CARDS.QUICK_WINS.METRICS.METRICS' | translate,
+          label: 'ANALYSIS_REPORT.CARDS.QUICK_WINS.METRICS.METRICS' | translate,
           sublabel:
-            'DASHBOARD.CARDS.QUICK_WINS.METRICS.QUANTIFIABLE_ACHIEVEMENTS'
+            'ANALYSIS_REPORT.CARDS.QUICK_WINS.METRICS.QUANTIFIABLE_ACHIEVEMENTS'
             | translate,
           value: store.analysisResult()?.quantifiableMetrics?.count || 0,
           textColor: 'text-sky-600',
@@ -42,9 +44,11 @@
         metric: {
           icon: 'text_format',
           label:
-            'DASHBOARD.CARDS.QUICK_WINS.METRICS.FORMATTING_TONE' | translate,
+            'ANALYSIS_REPORT.CARDS.QUICK_WINS.METRICS.FORMATTING_TONE'
+            | translate,
           sublabel:
-            'DASHBOARD.CARDS.QUICK_WINS.METRICS.ATS_PARSABILITY' | translate,
+            'ANALYSIS_REPORT.CARDS.QUICK_WINS.METRICS.ATS_PARSABILITY'
+            | translate,
           value: store.analysisResult()?.formattingCheck?.tone,
           textColor: 'text-purple-600',
           bgColor: 'bg-purple-100',

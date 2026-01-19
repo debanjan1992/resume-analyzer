@@ -3,38 +3,50 @@
 >
   <header class="flex items-center mb-6">
     <h3 class="font-bold flex-1">
-      {{ 'DASHBOARD.CARDS.SCORE_BREAKDOWN.TITLE' | translate }}
+      {{ 'ANALYSIS_REPORT.CARDS.SCORE_BREAKDOWN.TITLE' | translate }}
     </h3>
   </header>
   <div class="content flex flex-col gap-4">
     <app-score-bar
       [score]="store.analysisResult()?.scoreBreakdown?.hardSkills || 0"
-      [label]="'DASHBOARD.CARDS.SCORE_BREAKDOWN.LABELS.HARD_SKILLS' | translate"
+      [label]="
+        'ANALYSIS_REPORT.CARDS.SCORE_BREAKDOWN.LABELS.HARD_SKILLS' | translate
+      "
       [color]="'indigo'"
     ></app-score-bar>
     <app-score-bar
       [score]="store.analysisResult()?.scoreBreakdown?.experience || 0"
-      [label]="'DASHBOARD.CARDS.SCORE_BREAKDOWN.LABELS.EXPERIENCE' | translate"
+      [label]="
+        'ANALYSIS_REPORT.CARDS.SCORE_BREAKDOWN.LABELS.EXPERIENCE' | translate
+      "
       [color]="'indigo'"
     ></app-score-bar>
     <app-score-bar
       [score]="store.analysisResult()?.scoreBreakdown?.metrics || 0"
-      [label]="'DASHBOARD.CARDS.SCORE_BREAKDOWN.LABELS.METRICS' | translate"
+      [label]="
+        'ANALYSIS_REPORT.CARDS.SCORE_BREAKDOWN.LABELS.METRICS' | translate
+      "
       [color]="'amber'"
     ></app-score-bar>
     <app-score-bar
       [score]="store.analysisResult()?.scoreBreakdown?.formatting || 0"
-      [label]="'DASHBOARD.CARDS.SCORE_BREAKDOWN.LABELS.FORMATTING' | translate"
+      [label]="
+        'ANALYSIS_REPORT.CARDS.SCORE_BREAKDOWN.LABELS.FORMATTING' | translate
+      "
       [color]="'green'"
     ></app-score-bar>
     <app-score-bar
       [score]="store.analysisResult()?.scoreBreakdown?.education || 0"
-      [label]="'DASHBOARD.CARDS.SCORE_BREAKDOWN.LABELS.EDUCATION' | translate"
+      [label]="
+        'ANALYSIS_REPORT.CARDS.SCORE_BREAKDOWN.LABELS.EDUCATION' | translate
+      "
       [color]="'green'"
     ></app-score-bar>
     <app-score-bar
       [score]="store.analysisResult()?.scoreBreakdown?.relevance || 0"
-      [label]="'DASHBOARD.CARDS.SCORE_BREAKDOWN.LABELS.RELEVANCE' | translate"
+      [label]="
+        'ANALYSIS_REPORT.CARDS.SCORE_BREAKDOWN.LABELS.RELEVANCE' | translate
+      "
       [color]="'indigo'"
     ></app-score-bar>
   </div>

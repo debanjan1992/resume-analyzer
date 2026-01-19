@@ -6,13 +6,13 @@
       apartment
     </span>
     <span class="font-bold">{{
-      'DASHBOARD.CARDS.STRUCTURE_CHECK.TITLE' | translate
+      'ANALYSIS_REPORT.CARDS.STRUCTURE_CHECK.TITLE' | translate
     }}</span>
   </header>
   <div class="content flex flex-wrap gap-4">
     <div class="detected-skills flex-1">
       <header class="mb-2 font-semibold text-sm">
-        {{ 'DASHBOARD.CARDS.STRUCTURE_CHECK.DETECTED' | translate }} ({{
+        {{ 'ANALYSIS_REPORT.CARDS.STRUCTURE_CHECK.DETECTED' | translate }} ({{
           store.analysisResult()?.essentialSections?.detected?.length ?? 0
         }})
       </header>
@@ -30,7 +30,7 @@
     @if (store.analysisResult()?.essentialSections?.missing?.length || 0 > 0) {
       <div class="missing-skills flex-1">
         <header class="mb-2 font-semibold text-sm">
-          {{ 'DASHBOARD.CARDS.STRUCTURE_CHECK.MISSING' | translate }} ({{
+          {{ 'ANALYSIS_REPORT.CARDS.STRUCTURE_CHECK.MISSING' | translate }} ({{
             store.analysisResult()?.essentialSections?.missing?.length ?? 0
           }})
         </header>

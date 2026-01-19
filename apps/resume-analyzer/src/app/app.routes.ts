@@ -1,6 +1,6 @@
 import { Route } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { Dashboard } from './dashboard/dashboard';
+import { Analysis } from './analysis/analysis';
 
 export const appRoutes: Route[] = [
   {
@@ -19,11 +19,13 @@ export const appRoutes: Route[] = [
       ),
     children: [
       { path: 'editor', component: HomeComponent },
-      { path: 'analysis/:id', component: Dashboard },
+      { path: 'analysis/:id', component: Analysis },
       {
-        path: 'history',
+        path: 'dashboard',
         loadComponent: () =>
-          import('./history/history.component').then((m) => m.HistoryComponent),
+          import('./dashboard/dashboard.component').then(
+            (m) => m.DashboardComponent,
+          ),
       },
     ],
   },

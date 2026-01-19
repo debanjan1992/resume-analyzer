@@ -6,13 +6,13 @@
       skillet
     </span>
     <span class="font-bold">{{
-      'DASHBOARD.CARDS.SOFT_SKILLS.TITLE' | translate
+      'ANALYSIS_REPORT.CARDS.SOFT_SKILLS.TITLE' | translate
     }}</span>
   </header>
   <div class="content flex flex-wrap gap-4">
     <div class="detected-skills">
       <header class="mb-2 font-semibold text-sm">
-        {{ 'DASHBOARD.CARDS.SOFT_SKILLS.DETECTED' | translate }} ({{
+        {{ 'ANALYSIS_REPORT.CARDS.SOFT_SKILLS.DETECTED' | translate }} ({{
           store.analysisResult()?.softSkills?.detected?.length ?? 0
         }})
       </header>
@@ -31,7 +31,7 @@
     @if (store.analysisResult()?.softSkills?.missing?.length || 0 > 0) {
       <div class="missing-skills">
         <header class="mb-2 font-semibold text-sm">
-          {{ 'DASHBOARD.CARDS.SOFT_SKILLS.MISSING' | translate }} ({{
+          {{ 'ANALYSIS_REPORT.CARDS.SOFT_SKILLS.MISSING' | translate }} ({{
             store.analysisResult()?.softSkills?.missing?.length ?? 0
           }})
         </header>

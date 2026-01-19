@@ -6,7 +6,7 @@
     "TITLE": "Smart Resume Analyzer",
     "NAV": {
       "EDITOR": "Editor",
-      "HISTORY": "History",
+      "DASHBOARD": "Dashboard",
       "ANALYSIS": "Analysis"
     },
     "USER": {
@@ -170,7 +170,7 @@
       "COMPILING": "Compiling results..."
     }
   },
-  "DASHBOARD": {
+  "ANALYSIS_REPORT": {
     "TITLE": "Analysis Report",
     "GENERATED_ON": "Generated on",
     "TARGET_ROLE": "Target Role",
@@ -243,10 +243,20 @@
       }
     }
   },
-  "HISTORY": {
-    "TITLE": "Scan History",
+  "DASHBOARD": {
+    "TITLE": "Dashboard",
+    "WELCOME": "Welcome back. Here are your recent scans.",
+    "START_PROMPT": "Start by creating a new resume analysis to see your insights here.",
     "NO_HISTORY": "No analysis history found.",
     "NEW_ANALYSIS": "Start a new analysis",
+    "STATS": {
+      "TOTAL_SCANS": "Total Scans",
+      "AVG_SCORE": "Avg. Score",
+      "TARGET_ROLES": "Target Roles"
+    },
+    "RECENT_SCANS": "Recent Scans",
+    "DEFAULT_ANALYSIS_NAME": "Resume Analysis",
+    "SCANNED": "Scanned",
     "COLUMNS": {
       "JOB_ROLE": "JOB ROLE",
       "DATE": "DATE",

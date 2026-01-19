@@ -1,0 +1,170 @@
+<div class="container mx-auto px-4 py-8 max-w-7xl">
+  <!-- Header -->
+  <div class="flex justify-between items-center mb-10">
+    <div>
+      <h1 class="text-3xl font-extrabold text-slate-900 mb-2">
+        {{ 'DASHBOARD.TITLE' | translate }}
+      </h1>
+      <p class="text-slate-500 font-medium">
+        {{ 'DASHBOARD.WELCOME' | translate }}
+      </p>
+    </div>
+    <a
+      routerLink="/editor"
+      class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold shadow-sm hover:shadow-md transition-all cursor-pointer"
+    >
+      <span class="material-symbols-outlined text-[20px]">add</span>
+      {{ 'DASHBOARD.NEW_ANALYSIS' | translate }}
+    </a>
+  </div>
+
+  @if (history.length === 0) {
+    <!-- Empty State -->
+    <div
+      class="text-center py-20 bg-gray-50 rounded-2xl border border-dashed border-gray-300"
+    >
+      <div
+        class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4"
+      >
+        <span class="material-symbols-outlined text-3xl">post_add</span>
+      </div>
+      <h3 class="text-xl font-bold text-gray-900 mb-2">
+        {{ 'DASHBOARD.NO_HISTORY' | translate }}
+      </h3>
+      <p class="text-gray-500 mb-6 max-w-md mx-auto">
+        {{ 'DASHBOARD.START_PROMPT' | translate }}
+      </p>
+      <a
+        routerLink="/editor"
+        class="text-blue-600 hover:text-blue-800 font-semibold hover:underline"
+      >
+        {{ 'DASHBOARD.NEW_ANALYSIS' | translate }}
+      </a>
+    </div>
+  } @else {
+    <!-- Stats Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+      <!-- Total Scans -->
+      <div
+        class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 flex items-center gap-5"
+      >
+        <div
+          class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center"
+        >
+          <span class="material-symbols-outlined text-2xl">description</span>
+        </div>
+        <div>
+          <p class="text-slate-500 font-medium text-sm mb-1">
+            {{ 'DASHBOARD.STATS.TOTAL_SCANS' | translate }}
+          </p>
+          <p class="text-3xl font-bold text-slate-900">{{ totalScans }}</p>
+        </div>
+      </div>
+
+      <!-- Avg Score -->
+      <div
+        class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 flex items-center gap-5"
+      >
+        <div
+          class="w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center"
+        >
+          <span class="material-symbols-outlined text-2xl">trending_up</span>
+        </div>
+        <div>
+          <p class="text-slate-500 font-medium text-sm mb-1">
+            {{ 'DASHBOARD.STATS.AVG_SCORE' | translate }}
+          </p>
+          <p class="text-3xl font-bold text-slate-900">
+            {{ avgScoreImprovement }}%
+          </p>
+          <!-- Using avg score as placeholder for improvement -->
+        </div>
+      </div>
+
+      <!-- Target Roles -->
+      <div
+        class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 flex items-center gap-5"
+      >
+        <div
+          class="w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center"
+        >
+          <span class="material-symbols-outlined text-2xl">work</span>
+        </div>
+        <div>
+          <p class="text-slate-500 font-medium text-sm mb-1">
+            {{ 'DASHBOARD.STATS.TARGET_ROLES' | translate }}
+          </p>
+          <p class="text-3xl font-bold text-slate-900">{{ uniqueRoles }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Scans List -->
+    <div
+      class="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden"
+    >
+      <div class="p-6 border-b border-slate-100">
+        <h2 class="text-lg font-bold text-slate-800">
+          {{ 'DASHBOARD.RECENT_SCANS' | translate }}
+        </h2>
+      </div>
+
+      <div class="divide-y divide-slate-100">
+        @for (entry of history; track entry.id) {
+          <div
+            (click)="loadEntry(entry)"
+            (keydown.enter)="loadEntry(entry)"
+            (keydown.space)="loadEntry(entry)"
+            tabindex="0"
+            role="button"
+            class="group p-5 flex items-center gap-6 hover:bg-slate-50 cursor-pointer transition-colors"
+          >
+            <!-- Score Circle -->
+            <div
+              class="w-12 h-12 rounded-full flex items-center justify-center font-bold text-sm shrink-0"
+              [class.bg-green-100]="entry.analysisResult.overallScore >= 80"
+              [class.text-green-700]="entry.analysisResult.overallScore >= 80"
+              [class.bg-orange-100]="
+                entry.analysisResult.overallScore >= 50 &&
+                entry.analysisResult.overallScore < 80
+              "
+              [class.text-orange-700]="
+                entry.analysisResult.overallScore >= 50 &&
+                entry.analysisResult.overallScore < 80
+              "
+              [class.bg-red-100]="entry.analysisResult.overallScore < 50"
+              [class.text-red-700]="entry.analysisResult.overallScore < 50"
+            >
+              {{ entry.analysisResult.overallScore }}
+            </div>
+
+            <!-- Info -->
+            <div class="flex-grow">
+              <h3
+                class="font-semibold text-slate-900 text-base mb-1 group-hover:text-blue-600 transition-colors"
+              >
+                {{
+                  entry.analysisResult.targetRole ||
+                    ('DASHBOARD.DEFAULT_ANALYSIS_NAME' | translate)
+                }}
+              </h3>
+              <div class="flex items-center gap-3 text-sm text-slate-500">
+                <span
+                  >{{ 'DASHBOARD.SCANNED' | translate }}
+                  {{ getTimeAgo(entry.timestamp) }}</span
+                >
+              </div>
+            </div>
+
+            <!-- Arrow -->
+            <span
+              class="material-symbols-outlined text-slate-300 group-hover:text-blue-600 transition-colors"
+            >
+              chevron_right
+            </span>
+          </div>
+        }
+      </div>
+    </div>
+  }
+</div>

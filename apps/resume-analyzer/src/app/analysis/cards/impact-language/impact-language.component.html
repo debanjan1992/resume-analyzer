@@ -6,7 +6,7 @@
       explosion
     </span>
     <span class="font-bold">{{
-      'DASHBOARD.CARDS.IMPACT_LANGUAGE.TITLE' | translate
+      'ANALYSIS_REPORT.CARDS.IMPACT_LANGUAGE.TITLE' | translate
     }}</span>
   </header>
   <div class="content">
@@ -21,7 +21,7 @@
           [class.text-slate-500]="activeView() !== 'strong'"
           [class.hover:text-slate-700]="activeView() !== 'strong'"
         >
-          {{ 'DASHBOARD.CARDS.IMPACT_LANGUAGE.STRONG_VERBS' | translate }}
+          {{ 'ANALYSIS_REPORT.CARDS.IMPACT_LANGUAGE.STRONG_VERBS' | translate }}
         </button>
 
         <button
@@ -33,7 +33,7 @@
           [class.text-slate-500]="activeView() !== 'weak'"
           [class.hover:text-slate-700]="activeView() !== 'weak'"
         >
-          {{ 'DASHBOARD.CARDS.IMPACT_LANGUAGE.WEAK_VERBS' | translate }}
+          {{ 'ANALYSIS_REPORT.CARDS.IMPACT_LANGUAGE.WEAK_VERBS' | translate }}
         </button>
       </div>
 
@@ -55,7 +55,8 @@
                 ></path>
               </svg>
               {{
-                'DASHBOARD.CARDS.IMPACT_LANGUAGE.POWER_VERBS_FOUND' | translate
+                'ANALYSIS_REPORT.CARDS.IMPACT_LANGUAGE.POWER_VERBS_FOUND'
+                  | translate
               }}
               ({{ store.analysisResult()?.powerVerbs?.list?.length ?? 0 }})
             </h4>
@@ -90,7 +91,8 @@
                 ></path>
               </svg>
               {{
-                'DASHBOARD.CARDS.IMPACT_LANGUAGE.WEAK_VERBS_FOUND' | translate
+                'ANALYSIS_REPORT.CARDS.IMPACT_LANGUAGE.WEAK_VERBS_FOUND'
+                  | translate
               }}
               ({{ store.analysisResult()?.powerVerbs?.weakVerbs?.length ?? 0 }})
             </h4>

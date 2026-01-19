@@ -6,13 +6,15 @@
       flare
     </span>
     <span class="font-bold">{{
-      'DASHBOARD.CARDS.RECOMMENDATIONS.TITLE' | translate
+      'ANALYSIS_REPORT.CARDS.RECOMMENDATIONS.TITLE' | translate
     }}</span>
   </header>
   <div class="content flex flex-col flex-wrap gap-4 h-full">
     @if (store.analysisResult()?.recommendedImprovements?.length === 0) {
       <div class="text-sm text-center font-medium text-stone-500 mt-8">
-        {{ 'DASHBOARD.CARDS.RECOMMENDATIONS.NO_RECOMMENDATIONS' | translate }}
+        {{
+          'ANALYSIS_REPORT.CARDS.RECOMMENDATIONS.NO_RECOMMENDATIONS' | translate
+        }}
       </div>
     } @else {
       @for (

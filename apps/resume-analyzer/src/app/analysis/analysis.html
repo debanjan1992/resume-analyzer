@@ -2,11 +2,11 @@
   <header class="flex flex-col gap-4 md:flex-row mb-8">
     <div class="title flex flex-col flex-1 text-center md:text-left">
       <h1 class="text-3xl font-bold mb-1">
-        {{ 'DASHBOARD.TITLE' | translate }}
+        {{ 'ANALYSIS_REPORT.TITLE' | translate }}
       </h1>
       <h4 class="text-sm text-stone-500">
-        {{ 'DASHBOARD.GENERATED_ON' | translate }} {{ date | date :
-        'mediumDate'}} - {{ 'DASHBOARD.TARGET_ROLE' | translate }}:
+        {{ 'ANALYSIS_REPORT.GENERATED_ON' | translate }} {{ date | date :
+        'mediumDate'}} - {{ 'ANALYSIS_REPORT.TARGET_ROLE' | translate }}:
         <span class="font-medium text-stone-800"
           >{{store.analysisResult()?.targetRole}}</span
         >
@@ -18,14 +18,14 @@
         [routerLink]="['/editor']"
       >
         <span class="material-symbols-outlined">upload</span>
-        <span>{{ 'DASHBOARD.RE_UPLOAD' | translate }}</span>
+        <span>{{ 'ANALYSIS_REPORT.RE_UPLOAD' | translate }}</span>
       </button>
       <button
         (click)="downloadReport()"
         class="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-lg bg-white text-gray-700 hover:bg-gray-100 transition-colors font-medium text-sm cursor-pointer"
       >
         <span class="material-symbols-outlined">download</span>
-        <span>{{ 'DASHBOARD.DOWNLOAD' | translate }}</span>
+        <span>{{ 'ANALYSIS_REPORT.DOWNLOAD' | translate }}</span>
       </button>
     </div>
   </header>
@@ -36,7 +36,7 @@
     >
       <span class="material-symbols-outlined text-red-600">warning</span>
       <span class="font-medium"
-        >{{ 'DASHBOARD.CRITICAL_ALERT' | translate }}</span
+        >{{ 'ANALYSIS_REPORT.CRITICAL_ALERT' | translate }}</span
       >
     </div>
     }

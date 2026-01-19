@@ -6,7 +6,7 @@
       bar_chart
     </span>
     <span class="font-bold">{{
-      'DASHBOARD.CARDS.QUANTIFIABLE_IMPACT.TITLE' | translate
+      'ANALYSIS_REPORT.CARDS.QUANTIFIABLE_IMPACT.TITLE' | translate
     }}</span>
   </header>
   <div class="content">
@@ -15,7 +15,9 @@
     </section>
     <section class="mb-4">
       <div class="text-xs font-semibold text-stone-400 mb-4">
-        {{ 'DASHBOARD.CARDS.QUANTIFIABLE_IMPACT.METRICS_FOUND' | translate }}
+        {{
+          'ANALYSIS_REPORT.CARDS.QUANTIFIABLE_IMPACT.METRICS_FOUND' | translate
+        }}
       </div>
       @for (
         metric of store.analysisResult()?.quantifiableMetrics?.list;

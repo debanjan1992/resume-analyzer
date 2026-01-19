@@ -6,13 +6,15 @@
       cloud_alert
     </span>
     <span class="font-bold">{{
-      'DASHBOARD.CARDS.CRITICAL_FIXES.TITLE' | translate
+      'ANALYSIS_REPORT.CARDS.CRITICAL_FIXES.TITLE' | translate
     }}</span>
   </header>
   <div class="content flex flex-col flex-wrap gap-4">
     @if (store.analysisResult()?.criticalFixes?.length === 0) {
       <div class="text-sm text-center font-medium text-stone-500 mt-8">
-        {{ 'DASHBOARD.CARDS.CRITICAL_FIXES.NO_CRITICAL_FIXES' | translate }}
+        {{
+          'ANALYSIS_REPORT.CARDS.CRITICAL_FIXES.NO_CRITICAL_FIXES' | translate
+        }}
       </div>
     } @else {
       @for (fix of store.analysisResult()?.criticalFixes ?? []; track fix) {
